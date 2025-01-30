@@ -33,19 +33,25 @@ modules:
       - https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/repo/fedora-%OS_VERSION%/pgdev-ghostty-fedora-%OS_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/che/nerd-fonts/repo/fedora-%OS_VERSION%/che-nerd-fonts-fedora-%OS_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
+      - https://packages.microsoft.com/yumrepos/edge/config.repo
     install:
       - cosmic-desktop
       - darkly
       - ghostty-git
       - interception-tools
-      - micro
+      - microsoft-edge
       #- starship
+    optfix:
+      # https://blue-build.org/reference/modules/rpm-ostree/#optfix-optional-array
       - https://prerelease.keybase.io/keybase_amd64.rpm
     remove: []
       # example: removing firefox (in favor of the flatpak)
       # "firefox" is the main package, "firefox-langpacks" is a dependency
     #  - firefox
     #  - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+  - type: script
+    scripts:
+      - "winbox.sh"
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
