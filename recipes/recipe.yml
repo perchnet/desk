@@ -7,7 +7,8 @@ description: https://github.com/perchnet/desk
 
 # the base image to build on top of (FROM) and the version tag to use
 # base-image: ghcr.io/ublue-os/silverblue-main
-base-image: ghcr.io/ublue-os/cosmic-kinoite
+#base-image: ghcr.io/ublue-os/cosmic-kinoite
+base-image: ghcr.io/ublue-os/aurora-dx
 image-version: 41 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -30,12 +31,15 @@ modules:
       - https://copr.fedorainfracloud.org/coprs/severen/interception-tools/repo/fedora-%OS_VERSION%/severen-interception-tools-fedora-%OS_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/deltacopy/darkly/repo/fedora-%OS_VERSION%/deltacopy-darkly-fedora-%OS_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/repo/fedora-%OS_VERSION%/pgdev-ghostty-fedora-%OS_VERSION%.repo
+      - https://copr.fedorainfracloud.org/coprs/che/nerd-fonts/repo/fedora-%OS_VERSION%/che-nerd-fonts-fedora-%OS_VERSION%.repo
+      - https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
     install:
+      - cosmic-desktop
       - darkly
       - ghostty-git
       - interception-tools
       - micro
-      - starship
+      #- starship
       - https://prerelease.keybase.io/keybase_amd64.rpm
     remove: []
       # example: removing firefox (in favor of the flatpak)
