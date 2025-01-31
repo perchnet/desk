@@ -38,13 +38,23 @@ modules:
       - chromium
       - cosmic-desktop
       - darkly
+      - elementary-files
       - ghostty-git
       - interception-tools
       - microsoft-edge
       - microsoft-edge-beta
+      - neovim
+      - xeyes
+      - yaml-cpp
+      - yaml-cpp-devel
+      - libevdev-devel
       - https://prerelease.keybase.io/keybase_amd64.rpm
+      - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
       #- starship
-    optfix: ['keybase']
+    optfix:
+      - keybase
+      - microsoft
+      - teamviewer
       # https://blue-build.org/reference/modules/rpm-ostree/#optfix-optional-array
     remove: []
       # example: removing firefox (in favor of the flatpak)
@@ -52,8 +62,11 @@ modules:
     #  - firefox
     #  - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
   - type: script
+    snippets:
+      - "rm /etc/yum.repos.d/teamviewer.repo" # because its signing is broken and i'm baking the rpm in anyway...
     scripts:
       - "winbox.sh"
+      - "keymapper.sh"
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
