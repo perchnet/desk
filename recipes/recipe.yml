@@ -35,15 +35,17 @@ modules:
       - https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
       - https://packages.microsoft.com/yumrepos/edge/config.repo
     install:
+      - chromium
       - cosmic-desktop
       - darkly
       - ghostty-git
       - interception-tools
       - microsoft-edge
-      #- starship
-    optfix:
-      # https://blue-build.org/reference/modules/rpm-ostree/#optfix-optional-array
+      - microsoft-edge-beta
       - https://prerelease.keybase.io/keybase_amd64.rpm
+      #- starship
+    optfix: ['keybase']
+      # https://blue-build.org/reference/modules/rpm-ostree/#optfix-optional-array
     remove: []
       # example: removing firefox (in favor of the flatpak)
       # "firefox" is the main package, "firefox-langpacks" is a dependency
