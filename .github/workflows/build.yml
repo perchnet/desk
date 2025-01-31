@@ -25,6 +25,12 @@ jobs:
     strategy:
       fail-fast: false # stop GH from cancelling all matrix builds if one fails
       matrix:
+        maximize_build_space:
+          - true
+          - false
+        rechunk:
+          - true
+          - false
         recipe:
           # !! Add your recipes here
           - recipe.yml
@@ -39,4 +45,5 @@ jobs:
           pr_event_number: ${{ github.event.number }}
 
           # enabled by default, disable if your image is small and you want faster builds
-          maximize_build_space: true
+          maximize_build_space: ${{ matrix.maximize_build_space }}
+          rechunk: ${{ matrix.rechunk }}
