@@ -41,7 +41,7 @@ modules:
       - elementary-files
       - ghostty-git
       - interception-tools
-      - microsoft-edge
+      - microsoft-edge-stable
       - microsoft-edge-beta
       - neovim
       - xeyes
@@ -57,15 +57,12 @@ modules:
       - teamviewer
       # https://blue-build.org/reference/modules/rpm-ostree/#optfix-optional-array
     remove: []
-      # example: removing firefox (in favor of the flatpak)
-      # "firefox" is the main package, "firefox-langpacks" is a dependency
-    #  - firefox
-    #  - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
   - type: script
     snippets:
       - "rm /etc/yum.repos.d/teamviewer.repo" # because its signing is broken and i'm baking the rpm in anyway...
   - type: script
     scripts:
+      - "fix-microsoft-edge.sh"
       - "winbox.sh"
       - "keymapper.sh"
 
