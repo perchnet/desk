@@ -64,6 +64,7 @@ modules:
   - type: script
     snippets:
       - "rm /etc/yum.repos.d/teamviewer.repo" # because its signing is broken and i'm baking the rpm in anyway...
+  - type: script
     scripts:
       - "winbox.sh"
       - "keymapper.sh"
