@@ -78,7 +78,7 @@ modules:
     user: {} # Also add Flathub user repo, but no user packages
 
   - type: bin-wrapper
-    source: ghcr.io/perchnet/modules
+    source: ghcr.io/perchnet/modules/bin-wrapper
     bin: /usr/bin/code
     flags: --enable-features=UseOzonePlatform --ozone-platform=wayland
 
