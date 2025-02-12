@@ -6,7 +6,7 @@ set -euxo pipefail
 
 SUFFIX="Linux.rpm"
 REPO="houmain/keymapper"
-SEARCH_STRING="Linux.rpm"
+SEARCH_STRING="Linux-x86_64.rpm"
 RELEASES_API(){
     local USAGE="Usage: RELEASES_API user/repo"
     local REPO="${1:?"${USAGE}"}"
