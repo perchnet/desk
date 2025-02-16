@@ -38,6 +38,7 @@ modules:
       - chromium
       - cosmic-desktop
       - darkly
+      - dialog
       - elementary-files
       - ghostty-git
       - interception-tools
