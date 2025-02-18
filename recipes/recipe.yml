@@ -45,6 +45,7 @@ modules:
       - microsoft-edge-stable
       - microsoft-edge-beta
       - neovim
+      - podlet
       - xeyes
       - yaml-cpp
       - yaml-cpp-devel
