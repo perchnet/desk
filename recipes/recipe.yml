@@ -82,7 +82,9 @@ modules:
   - type: bin-wrapper
     source: ghcr.io/perchnet/modules/bin-wrapper
     bin: /usr/bin/code
-    flags: --enable-features=UseOzonePlatform --ozone-platform=wayland
+    flags:
+      - --enable-features=UseOzonePlatform
+      - --ozone-platform=wayland
 
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
