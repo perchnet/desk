@@ -79,4 +79,10 @@ modules:
         - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
 
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/code
+    flags: --enable-features=UseOzonePlatform --ozone-platform=wayland
+
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
