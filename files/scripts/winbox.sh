@@ -3,7 +3,7 @@ set -euxo pipefail
 
 # maketmp dir
 TEMP_DIR=$(mktemp -d)
-cd "$TEMP_DIR"
+cd "${TEMP_DIR}"
 
 # get the WinBox AUR package, because that's the easiest way to check the latest version...
 curl -L https://aur.archlinux.org/cgit/aur.git/snapshot/winbox.tar.gz | tar -xzv

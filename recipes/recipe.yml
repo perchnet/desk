@@ -64,9 +64,8 @@ modules:
       - "rm /etc/yum.repos.d/teamviewer.repo" # because its signing is broken and i'm baking the rpm in anyway...
   - type: script
     scripts:
-      - "fix-microsoft-edge.sh"
       - "winbox.sh"
-      - "keymapper.sh"
+      # - "keymapper.sh"
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
@@ -83,8 +82,36 @@ modules:
     source: ghcr.io/perchnet/modules/bin-wrapper
     bin: /usr/bin/code
     flags:
-      - --enable-features=UseOzonePlatform
-      - --ozone-platform=wayland
-
+      - --ozone-platform-hint=auto
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/microsoft-edge-beta
+    flags:
+      - --ozone-platform-hint=auto
+      - --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/microsoft-edge-stable
+    flags:
+      - --ozone-platform-hint=auto
+      - --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/microsoft-edge-dev
+    flags:
+      - --ozone-platform-hint=auto
+      - --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/microsoft-edge-canary
+    flags:
+      - --ozone-platform-hint=auto
+      - --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/microsoft-edge
+    flags:
+      - --ozone-platform-hint=auto
+      - --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

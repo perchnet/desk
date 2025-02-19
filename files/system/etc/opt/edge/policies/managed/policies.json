@@ -1,66 +1,3 @@
-#!/bin/bash
-set -euxo pipefail
-# We will also apply some policies to the browser to set sane defaults.
-
-MAKE_WRAPPER() {
-#!/bin/bash
-# Create wrapper script
-#
-# This script will create a wrapper script, replacing the passed argument (a link) with a wrapper script that applies some flags.
-
-USAGE="
-Usage: ${0} <link> [flags...]
-Examples:
-  - ${0} /usr/bin/firefox --private-window
-  - ${0} /usr/bin/firefox --private-window --new-tab https://example.com
-  - ${0} /usr/bin/google-chrome --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation --ozone-platform=wayland
-"
-
-LINK="${1:?"${USAGE}"}"
-set -euo pipefail
-
-# load the script template
-# shellcheck disable=SC2016
-SCRIPT='#!/bin/bash
-# __SCRIPT__
-exec __TARGET__ __FLAGS__ "$@"
-'
-if [ ! -L "${LINK}" ]; then
-    echo "${LINK} is not a link, skipping..."
-    return
-fi
-shift
-if [ -n "${1:-}" ]; then # if additional flags are passed...
-    FLAGS_SPLAT="$(printf "%q " "${@}")"
-    else # no additional flags
-    FLAGS_SPLAT=""
-fi
-TARGET=$(readlink -f "${LINK}")
-# Replace links with a script that launches the browser with the correct flags:
-SCRIPT="${SCRIPT//__TARGET__/"${TARGET}"}" # Substitute the target in
-SCRIPT="${SCRIPT//__SCRIPT__/"${LINK}"}" # Replace the comment in the header, so we can identify the script
-SCRIPT="${SCRIPT//__FLAGS__/"${FLAGS_SPLAT}"}" # Substitute the flags in
-# echo "${SCRIPT}"
-rm -f "${LINK}" # Remove the link
-tee "${LINK}" <<<"$SCRIPT" # Write the script to the link
-chmod +x "${LINK}" # Make the script executable
-
-}
-
-FLAGS=(
-  "--enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation"
-  "--ozone-platform=wayland"
-)
-LINKS=(/usr/bin/microsoft-edge /usr/bin/microsoft-edge-stable /usr/bin/microsoft-edge-beta /usr/bin/microsoft-edge-dev /usr/bin/microsoft-edge-canary)
-for LINK in "${LINKS[@]}"; do
-  if [ -x "${LINK}" ]; then # NOTE this skips broken links
-    MAKE_WRAPPER "${LINK}" "${FLAGS[@]}"
-  fi
-done
-
-
-# Set POLICIES to a JSON object to apply policies to the browser.
-POLICIES=$(cat <<'EOF'
 {
   // https://docs.microsoft.com/en-us/deployedge/microsoft-edge-policies#passwordmanagerenabled
   // Enable Microsoft Edge to save user passwords.
@@ -324,9 +261,3 @@ POLICIES=$(cat <<'EOF'
   // "ConfigureFriendlyURLFormat": 3,
   // "NonRemovableProfileEnabled": false,
 }
-EOF
-)
-
-# Write this to a file, /etc/opt/edge/policies/managed/policies.json
-mkdir -p /etc/opt/edge/policies/managed
-tee /etc/opt/edge/policies/managed/policies.json <<<"$POLICIES"
