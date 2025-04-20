@@ -28,11 +28,11 @@ modules:
   - type: rpm-ostree
     repos:
       - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/brirec/interception-tools/repo/fedora-%OS_VERSION%/severen-interception-tools-fedora-%OS_VERSION%.repo
+      - https://copr.fedorainfracloud.org/coprs/brirec/interception-tools/repo/fedora-%OS_VERSION%/brirec-interception-tools-fedora-%OS_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/deltacopy/darkly/repo/fedora-%OS_VERSION%/deltacopy-darkly-fedora-%OS_VERSION%.repo
       # - https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/repo/fedora-%OS_VERSION%/pgdev-ghostty-fedora-%OS_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/che/nerd-fonts/repo/fedora-%OS_VERSION%/che-nerd-fonts-fedora-%OS_VERSION%.repo
-      #- https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
+      # - https://copr.fedorainfracloud.org/coprs/che/nerd-fonts/repo/fedora-%OS_VERSION%/che-nerd-fonts-fedora-%OS_VERSION%.repo
+      - https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
       - https://packages.microsoft.com/yumrepos/edge/config.repo
     install:
       - chromium
