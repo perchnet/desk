@@ -9,7 +9,7 @@ description: https://github.com/perchnet/desk
 # base-image: ghcr.io/ublue-os/silverblue-main
 #base-image: ghcr.io/ublue-os/cosmic-kinoite
 base-image: ghcr.io/ublue-os/aurora-dx
-image-version: 41 # latest is also supported if you want new updates ASAP
+image-version: 42 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -28,10 +28,10 @@ modules:
   - type: rpm-ostree
     repos:
       - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/severen/interception-tools/repo/fedora-%OS_VERSION%/severen-interception-tools-fedora-%OS_VERSION%.repo
+      - https://copr.fedorainfracloud.org/coprs/brirec/interception-tools/repo/fedora-%OS_VERSION%/brirec-interception-tools-fedora-%OS_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/deltacopy/darkly/repo/fedora-%OS_VERSION%/deltacopy-darkly-fedora-%OS_VERSION%.repo
       # - https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/repo/fedora-%OS_VERSION%/pgdev-ghostty-fedora-%OS_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/che/nerd-fonts/repo/fedora-%OS_VERSION%/che-nerd-fonts-fedora-%OS_VERSION%.repo
+      # - https://copr.fedorainfracloud.org/coprs/che/nerd-fonts/repo/fedora-%OS_VERSION%/che-nerd-fonts-fedora-%OS_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
       - https://packages.microsoft.com/yumrepos/edge/config.repo
     install:
