@@ -66,6 +66,7 @@ modules:
   - type: script
     scripts:
       - "winbox.sh"
+      - "install_cursor_ai.sh"
       # - "keymapper.sh"
 
   - type: default-flatpaks
@@ -114,5 +115,13 @@ modules:
     flags:
       - --ozone-platform-hint=auto
       - --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation
+
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/cursor
+    flags:
+      - --ozone-platform-hint=auto
+      - --enable-features=UseOzonePlatform
+      - --no-sandbox
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
