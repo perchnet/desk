@@ -8,4 +8,4 @@ cd "${tmpdir}"
 curl -L "${CURSOR_URL}" -o cursor.appimage
 chmod +x cursor.appimage
 ./cursor.appimage --appimage-extract
-cp -R squashfs-root/usr /usr
+cp -R squashfs-root/usr /
