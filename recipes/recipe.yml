@@ -44,16 +44,17 @@ modules:
       - falkon
       - ghostty
       - interception-tools
-      - microsoft-edge-stable
+      - libevdev-devel
       - microsoft-edge-beta
+      - microsoft-edge-stable
       - neovim
       - podlet
-      - xeyes
       - waypipe
       - windsurf
+      - xeyes
       - yaml-cpp
       - yaml-cpp-devel
-      - libevdev-devel
+      - zed
       - https://prerelease.keybase.io/keybase_amd64.rpm
       - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
     remove:
