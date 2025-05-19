@@ -49,19 +49,20 @@ modules:
       - neovim
       - podlet
       - xeyes
+      - waypipe
       - windsurf
       - yaml-cpp
       - yaml-cpp-devel
       - libevdev-devel
       - https://prerelease.keybase.io/keybase_amd64.rpm
       - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
-      #- starship
+    remove:
+      - xwaylandvideobridge
     optfix:
       - keybase
       - microsoft
       - teamviewer
       # https://blue-build.org/reference/modules/rpm-ostree/#optfix-optional-array
-    remove: []
   - type: script
     snippets:
       - "rm /etc/yum.repos.d/teamviewer.repo" # because its signing is broken and i'm baking the rpm in anyway...
@@ -111,16 +112,18 @@ modules:
     flags:
       - --ozone-platform-hint=auto
       - --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation
-  - type: bin-wrapper
-    source: ghcr.io/perchnet/modules/bin-wrapper
-    bin: /usr/bin/microsoft-edge
-    flags:
-      - --ozone-platform-hint=auto
-      - --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation
 
   - type: bin-wrapper
     source: ghcr.io/perchnet/modules/bin-wrapper
     bin: /usr/bin/cursor
+    flags:
+      - --ozone-platform-hint=auto
+      - --enable-features=UseOzonePlatform
+      - --no-sandbox
+
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/windsurf
     flags:
       - --ozone-platform-hint=auto
       - --enable-features=UseOzonePlatform
