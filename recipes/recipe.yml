@@ -45,16 +45,17 @@ modules:
       - ghostty
       - interception-tools
       - libevdev-devel
-      - microsoft-edge-beta
+      #- microsoft-edge-beta
       - microsoft-edge-stable
       - neovim
       - podlet
       - waypipe
-      - windsurf
+      #- windsurf
       - xeyes
       - yaml-cpp
       - yaml-cpp-devel
       - zed
+      - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
       - https://prerelease.keybase.io/keybase_amd64.rpm
       - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
     remove:
@@ -129,5 +130,12 @@ modules:
       - --ozone-platform-hint=auto
       - --enable-features=UseOzonePlatform
       - --no-sandbox
+
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/1password
+    flags:
+      - --ozone-platform-hint=auto
+      - --enable-features=UseOzonePlatform
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
