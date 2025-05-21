@@ -58,6 +58,7 @@ modules:
       - keybase
       - microsoft
       - teamviewer
+      - vivaldi
       # https://blue-build.org/reference/modules/rpm-ostree/#optfix-optional-array
   - type: script
     snippets:
