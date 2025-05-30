@@ -39,7 +39,7 @@ modules:
       - ghostty
       - interception-tools
       - libevdev-devel
-      #- microsoft-edge-beta
+      - microsoft-edge-beta
       - microsoft-edge-stable
       - neovim
       - podlet
