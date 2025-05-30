@@ -26,8 +26,8 @@ jobs:
       fail-fast: false # stop GH from cancelling all matrix builds if one fails
       matrix:
         rechunk:
-          - true
-          - false
+          - rechunked
+          - not-rechunked
         recipe:
           # !! Add your recipes here
           - recipe.yml
@@ -38,7 +38,7 @@ jobs:
         uses: blue-build/github-action@v1.8
         with:
           recipe: ${{ matrix.recipe }}
-          rechunk: ${{ matrix.rechunk }}
+          rechunk: ${{ matrix.rechunk == 'rechunked' && 'true' || 'false' }}
           cosign_private_key: ${{ secrets.SIGNING_SECRET }}
           registry_token: ${{ github.token }}
           pr_event_number: ${{ github.event.number }}
