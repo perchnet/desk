@@ -28,7 +28,7 @@ modules:
       # - https://copr.fedorainfracloud.org/coprs/che/nerd-fonts/repo/fedora-%OS_VERSION%/che-nerd-fonts-fedora-%OS_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
       - https://packages.microsoft.com/yumrepos/edge/config.repo
-      - https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/yum/windsurf.repo
+      #- https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/yum/windsurf.repo
     install:
       - chromium
       - cosmic-desktop
