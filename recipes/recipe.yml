@@ -52,8 +52,7 @@ modules:
       - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
       - https://prerelease.keybase.io/keybase_amd64.rpm
       - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
-    remove:
-      - xwaylandvideobridge
+    #remove: [ "xwaylandvideobridge" ]
     optfix:
       - keybase
       - microsoft
