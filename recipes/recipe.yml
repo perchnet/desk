@@ -133,7 +133,7 @@ modules:
 
   - type: bin-wrapper
     source: ghcr.io/perchnet/modules/bin-wrapper
-    bin: /usr/bin/1password
+    bin: /usr/lib/1Password/1password
     flags:
       - --ozone-platform-hint=auto
       - --enable-features=UseOzonePlatform
