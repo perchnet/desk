@@ -53,6 +53,7 @@ modules:
       - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
     #remove: [ "xwaylandvideobridge" ]
     optfix:
+      - google
       - keybase
       - microsoft
       - teamviewer
