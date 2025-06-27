@@ -17,42 +17,51 @@ modules:
   - type: script
     scripts:
       - "before-packages.sh"
-  - type: rpm-ostree
+  - type: dnf
     repos:
-      - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/brirec/interception-tools/repo/fedora-%OS_VERSION%/brirec-interception-tools-fedora-%OS_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/deltacopy/darkly/repo/fedora-%OS_VERSION%/deltacopy-darkly-fedora-%OS_VERSION%.repo
-      # - https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/repo/fedora-%OS_VERSION%/pgdev-ghostty-fedora-%OS_VERSION%.repo
-      # - https://copr.fedorainfracloud.org/coprs/che/nerd-fonts/repo/fedora-%OS_VERSION%/che-nerd-fonts-fedora-%OS_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
-      - https://packages.microsoft.com/yumrepos/edge/config.repo
-      #- https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/yum/windsurf.repo
+      files:
+        - https://packages.microsoft.com/yumrepos/edge/config.repo
+        #- https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/yum/windsurf.repo
+      copr:
+        - brirec/interception-tools
+        #- ryanabx/cosmic-epoch
+        - pgdev/ghostty
+        - che/nerd-fonts
+        - deltacopy/darkly
+        - atim/starship
+      cleanup: true
+    group-install:
+      with-optional: true
+      packages:
+        - cosmic-desktop
+        - cosmic-desktop-apps
     install:
-      - chromium
-      - cosmic-desktop
-      - darkly
-      - dialog
-      - elementary-files
-      - falkon
-      - ghostty
-      - interception-tools
-      - libevdev-devel
-      - microsoft-edge-beta
-      - microsoft-edge-stable
-      - neovim
-      - podlet
-      - waypipe
-      #- windsurf
-      - xeyes
-      - yaml-cpp
-      - yaml-cpp-devel
-      - zed
-      - zoxide
-      - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-      - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
-      - https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
-      - https://prerelease.keybase.io/keybase_amd64.rpm
-      - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
+      packages:
+        - chromium
+        - darkly
+        - dialog
+        - elementary-files
+        - falkon
+        - ghostty
+        - interception-tools
+        - libevdev-devel
+        - microsoft-edge-beta
+        - microsoft-edge-stable
+        - neovim
+        - podlet
+        - steam
+        - waypipe
+        #- windsurf
+        - xeyes
+        - yaml-cpp
+        - yaml-cpp-devel
+        - zed
+        - zoxide
+        - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+        - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
+        - https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
+        - https://prerelease.keybase.io/keybase_amd64.rpm
+        - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
     #remove: [ "xwaylandvideobridge" ]
     optfix:
       - google
