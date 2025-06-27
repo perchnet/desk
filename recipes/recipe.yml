@@ -21,6 +21,7 @@ modules:
     repos:
       files:
         - https://packages.microsoft.com/yumrepos/edge/config.repo
+        - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
         #- https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/yum/windsurf.repo
       copr:
         - brirec/interception-tools
@@ -50,6 +51,8 @@ modules:
         - neovim
         - podlet
         - steam
+        - terra-release
+        - terra-release-extra
         - waypipe
         #- windsurf
         - xeyes
