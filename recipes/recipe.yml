@@ -53,6 +53,7 @@ modules:
       - https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
       - https://prerelease.keybase.io/keybase_amd64.rpm
       - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
+      - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
     #remove: [ "xwaylandvideobridge" ]
     optfix:
       - google
@@ -60,6 +61,7 @@ modules:
       - microsoft
       - teamviewer
       - vivaldi
+      - xpipe
       # https://blue-build.org/reference/modules/rpm-ostree/#optfix-optional-array
   - type: script
     snippets:
