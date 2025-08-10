@@ -3,7 +3,7 @@ set -euxo pipefail
 
 mkdir -p "/var/opt"
 
-print "Creating symlinks to fix packages that installed to /opt:"
+echo "Creating symlinks to fix packages that installed to /opt:"
 for optdir in /opt/*; do
     opt=$(basename "$optdir")
     lib_opt_dir="/usr/lib/opt/$opt"
