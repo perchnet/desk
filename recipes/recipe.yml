@@ -54,6 +54,7 @@ modules:
       - https://prerelease.keybase.io/keybase_amd64.rpm
       - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
       - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
+      - https://github.com/xpipe-io/xpipe-ptb/releases/latest/download/xpipe-installer-linux-x86_64.rpm
     #remove: [ "xwaylandvideobridge" ]
     #optfix:
     #  - google
