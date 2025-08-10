@@ -55,14 +55,14 @@ modules:
       - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
       - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
     #remove: [ "xwaylandvideobridge" ]
-    optfix:
-      - google
-      - keybase
-      - microsoft
-      - teamviewer
-      - vivaldi
-      - xpipe
-      # https://blue-build.org/reference/modules/rpm-ostree/#optfix-optional-array
+    #optfix:
+    #  - google
+    #  - keybase
+    #  - microsoft
+    #  - teamviewer
+    #  - vivaldi
+    #  - xpipe
+    #  # https://blue-build.org/reference/modules/rpm-ostree/#optfix-optional-array
   - type: script
     snippets:
       - "rm /etc/yum.repos.d/teamviewer.repo" # because its signing is broken and i'm baking the rpm in anyway...
@@ -147,5 +147,7 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+  - type: script
+    snippets: ["one-true-optfix.sh"]
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
