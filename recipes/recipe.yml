@@ -55,6 +55,12 @@ modules:
       - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
       - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
       - https://github.com/xpipe-io/xpipe-ptb/releases/latest/download/xpipe-installer-linux-x86_64.rpm
+      remove: [ "tailscale" ] # to make room for tailscale-unstable
+  - type: script
+    snippets:
+      - dnf config-manager addrepo --from-repofile https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
+      - dnf install tailscale --from-repo=tailscale-unstable
+
     #remove: [ "xwaylandvideobridge" ]
     #optfix:
     #  - google
