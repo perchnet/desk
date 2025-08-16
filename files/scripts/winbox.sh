@@ -5,19 +5,26 @@ set -euxo pipefail
 TEMP_DIR=$(mktemp -d)
 cd "${TEMP_DIR}"
 
-# get the WinBox AUR package, because that's the easiest way to check the latest version...
-curl -L https://aur.archlinux.org/cgit/aur.git/snapshot/winbox.tar.gz | tar -xzv
-cd winbox
-source PKGBUILD
+GOOD_WINBOX_URL="https://download.mikrotik.com/routeros/winbox/4.0beta29/WinBox_Linux.zip"
+URL="${GOOD_WINBOX_URL}"
+ZIPFile="winbox.zip"
+try_get_winbox() {
+k   # Fetch MikroTik downloads page
+    html=$(wget -qO - "https://mikrotik.com/download")
 
-# "source=WinBox-4.0beta17.zip::https://download.mikrotik.com/routeros/winbox/4.0beta17/WinBox_Linux.zip"
-URL="${source##*::}"
-ZIPFile="${source%%::*}"
+    # Extract the WinBox_Linux.zip link
+    download_url=$(echo "${html}" | grep -Eo 'https://[^"]*WinBox_Linux\.zip' | head -n 1)
+
+    if [[ -n "${download_url}" ]]; then
+        echo "Download URL: \"${download_url}\""
+        export ZIPFile="${download_url}"
+    fi
+}
 curl -L "${URL}" -o "${ZIPFile}"
 unzip "${ZIPFile}"
 srcdir="$(pwd)"
 pkgdir="/"
-# pkgdir="$(mktemp -d)"
-set -x
-package
+install -D -m0755 "${srcdir}/WinBox" "${pkgdir}/usr/bin/WinBox"
+install -D -m0644 "${srcdir}/assets/img/winbox.png" "${pkgdir}/usr/share/pixmaps/winbox.png"
+install -D -m0644 "${srcdir}/winbox.desktop" "${pkgdir}/usr/share/applications/winbox.desktop"
 rm -fR "${TEMP_DIR}" "${srcdir}"
