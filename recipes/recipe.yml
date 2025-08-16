@@ -63,6 +63,7 @@ modules:
           - tailscale-stable
         add:
           - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
+  - type: dnf
     install:
       packages:
         - repo: tailscale-unstable
