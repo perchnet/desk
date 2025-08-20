@@ -22,6 +22,18 @@ k   # Fetch MikroTik downloads page
 }
 curl -L "${URL}" -o "${ZIPFile}"
 unzip "${ZIPFile}"
+tee winbox.desktop <<EOF
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=WinBox
+Comment=GUI administration for Mikrotik RouterOS
+Exec=/usr/bin/env --unset=QT_QPA_PLATFORM /usr/bin/WinBox
+Icon=winbox
+Terminal=false
+Categories=Utility
+StartupWMClass=winbox
+EOF
 srcdir="$(pwd)"
 pkgdir="/"
 install -D -m0755 "${srcdir}/WinBox" "${pkgdir}/usr/bin/WinBox"
