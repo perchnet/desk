@@ -55,15 +55,34 @@ modules:
       - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
       - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
       - https://github.com/xpipe-io/xpipe-ptb/releases/latest/download/xpipe-installer-linux-x86_64.rpm
-    #remove: [ "xwaylandvideobridge" ]
-    #optfix:
-    #  - google
-    #  - keybase
-    #  - microsoft
-    #  - teamviewer
-    #  - vivaldi
-    #  - xpipe
-    #  # https://blue-build.org/reference/modules/rpm-ostree/#optfix-optional-array
+    remove: ["tailscale"] # to make room for tailscale-unstable
+  - type: dnf
+    repos:
+      files:
+        remove:
+          - tailscale-stable
+        add:
+          - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
+  - type: dnf
+    install:
+      packages:
+        - repo: tailscale-unstable
+          packages:
+            - tailscale
+  #- type: script
+  #  snippets:
+  #    - dnf config-manager addrepo --from-repofile https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
+  #    - dnf install tailscale --from-repo=tailscale-unstable
+
+  #remove: [ "xwaylandvideobridge" ]
+  #optfix:
+  #  - google
+  #  - keybase
+  #  - microsoft
+  #  - teamviewer
+  #  - vivaldi
+  #  - xpipe
+  #  # https://blue-build.org/reference/modules/rpm-ostree/#optfix-optional-array
   - type: script
     snippets:
       - "rm /etc/yum.repos.d/teamviewer.repo" # because its signing is broken and i'm baking the rpm in anyway...
