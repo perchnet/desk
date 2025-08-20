@@ -68,7 +68,7 @@ modules:
       packages:
         - repo: tailscale-unstable
           packages:
-            - tailscale-unstable
+            - tailscale
   #- type: script
   #  snippets:
   #    - dnf config-manager addrepo --from-repofile https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
