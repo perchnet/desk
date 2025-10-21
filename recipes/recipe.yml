@@ -170,8 +170,9 @@ modules:
   - type: script
     snippets:
       - |
-        for optfix in /usr/lib/bluebuild-optfix/* ; do
-          ln -s "${optfix}" /usr/lib/opt/"$(basename ${optfix})"
-        done
+        # move anything that might be in /usr/lib/opt to /usr/lib/bluebuild-optfix
+        find /usr/lib/opt -not -path /usr/lib/opt -print -exec mv {} /usr/lib/bluebuild-optfix \;
+        # link /usr/lib/bluebuild-optfix to /usr/lib/opt
+        ln -s /usr/lib/bluebuild-optfix /usr/lib/opt
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
