@@ -19,7 +19,7 @@ modules:
       - "before-packages.sh"
   - type: script
     snippets:
-      - "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release"
+      - "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release -y"
   - type: dnf
     repos:
       cleanup: true
