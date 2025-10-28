@@ -42,10 +42,10 @@ modules:
         - repo: copr:copr.fedorainfracloud.org:atim:starship
           packages:
             - starship
-        - repo: edge-yum
-          packages:
-            - microsoft-edge-beta
-            - microsoft-edge-stable
+        #- repo: edge-yum
+        #  packages:
+        - microsoft-edge-beta
+        - microsoft-edge-stable
             # - microsoft-edge-dev
             # - microsoft-edge-canary
         - repo: terra
