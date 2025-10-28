@@ -17,58 +17,117 @@ modules:
   - type: script
     scripts:
       - "before-packages.sh"
-  - type: rpm-ostree
-    repos:
-      - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/brirec/interception-tools/repo/fedora-%OS_VERSION%/brirec-interception-tools-fedora-%OS_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/deltacopy/darkly/repo/fedora-%OS_VERSION%/deltacopy-darkly-fedora-%OS_VERSION%.repo
-      # - https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/repo/fedora-%OS_VERSION%/pgdev-ghostty-fedora-%OS_VERSION%.repo
-      # - https://copr.fedorainfracloud.org/coprs/che/nerd-fonts/repo/fedora-%OS_VERSION%/che-nerd-fonts-fedora-%OS_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
-      - https://packages.microsoft.com/yumrepos/edge/config.repo
-      #- https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/yum/windsurf.repo
-    install:
-      - chromium
-      - cosmic-desktop
-      - darkly
-      - dialog
-      - elementary-files
-      - falkon
-      - ghostty
-      - interception-tools
-      - libevdev-devel
-      - microsoft-edge-beta
-      - microsoft-edge-stable
-      - neovim
-      - podlet
-      - waypipe
-      #- windsurf
-      - xeyes
-      - yaml-cpp
-      - yaml-cpp-devel
-      - zed
-      - zoxide
-      - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-      - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
-      - https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
-      - https://prerelease.keybase.io/keybase_amd64.rpm
-      - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
-      - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
-      - https://github.com/xpipe-io/xpipe-ptb/releases/latest/download/xpipe-installer-linux-x86_64.rpm
-    remove: ["tailscale"] # to make room for tailscale-unstable
   - type: dnf
-    repos:
-      files:
-        remove:
-          - tailscale-stable
-        add:
-          - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
-  - type: dnf
+    group-install:
+      packages:
+        - cosmic-desktop
+        - cosmic-desktop-apps
+      with-optional: true
+      install-weak-deps: true
+      skip-unavailable: false
+      skip-broken: false
+      allow-erasing: false
     install:
       packages:
-        - repo: tailscale-unstable
+        - repo: copr:copr.fedorainfracloud.org:scottames:ghostty
           packages:
-            - tailscale
+            - ghostty
+        - repo: copr:copr.fedorainfracloud.org:brirec:interception-tools
+          packages:
+            - interception-tools
+        - repo: copr:copr.fedorainfracloud.org:deltacopy:darkly
+          packages:
+            - darkly
+        - repo: copr:copr.fedorainfracloud.org:atim:starship
+          packages:
+            - starship
+        - repo: https://packages.microsoft.com/yumrepos/edge/config.repo
+          packages:
+            - microsoft-edge-beta
+            - microsoft-edge-stable
+            # - microsoft-edge-dev
+            # - microsoft-edge-canary
+        - repo: terra
+          packages:
+            - zed
+        - repo: https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
+          packages:
+            - teamviewer
+
+        - chromium
+        - dialog
+        - elementary-files
+        - falkon
+        - libevdev-devel
+        - neovim
+        - podlet
+        - waypipe
+        - xeyes
+        - yaml-cpp
+        - yaml-cpp-devel
+        - zoxide
+    replace:
+      - from-repo: https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
+        packages:
+          - tailscale
+        install-weak-deps: true
+        skip-unavailable: false
+        skip-broken: false
+        allow-erasing: false
+
+
+#  - type: rpm-ostree
+#    repos:
+#      #- https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
+#      # - https://copr.fedorainfracloud.org/coprs/brirec/interception-tools/repo/fedora-%OS_VERSION%/brirec-interception-tools-fedora-%OS_VERSION%.repo
+#      #- https://copr.fedorainfracloud.org/coprs/deltacopy/darkly/repo/fedora-%OS_VERSION%/deltacopy-darkly-fedora-%OS_VERSION%.repo
+#      # - https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/repo/fedora-%OS_VERSION%/pgdev-ghostty-fedora-%OS_VERSION%.repo
+#      # - https://copr.fedorainfracloud.org/coprs/che/nerd-fonts/repo/fedora-%OS_VERSION%/che-nerd-fonts-fedora-%OS_VERSION%.repo
+#      #- https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
+#      - https://packages.microsoft.com/yumrepos/edge/config.repo
+#      #- https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/yum/windsurf.repo
+#    install:
+#      #- cosmic-desktop
+#      #- interception-tools
+#      - chromium
+#      - darkly
+#      - dialog
+#      - elementary-files
+#      - falkon
+#      #- ghostty
+#      - libevdev-devel
+#      - microsoft-edge-beta
+#      - microsoft-edge-stable
+#      - neovim
+#      - podlet
+#      - waypipe
+#      #- windsurf
+#      - xeyes
+#      - yaml-cpp
+#      - yaml-cpp-devel
+#      - zed
+#      - zoxide
+#      - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+#      - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
+#      - https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
+#      - https://prerelease.keybase.io/keybase_amd64.rpm
+#      - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
+#      - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
+#      - https://github.com/xpipe-io/xpipe-ptb/releases/latest/download/xpipe-installer-linux-x86_64.rpm
+#    remove: ["tailscale"] # to make room for tailscale-unstable
+#  - type: dnf
+#    repos:
+#      files:
+#        remove:
+#          - tailscale-stable
+#        add:
+#          - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
+#  - type: dnf
+#    install:
+#      packages:
+#        - repo: tailscale-unstable
+#          packages:
+#            - tailscale
   #- type: script
   #  snippets:
   #    - dnf config-manager addrepo --from-repofile https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
