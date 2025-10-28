@@ -39,9 +39,6 @@ modules:
         - repo: copr:copr.fedorainfracloud.org:brirec:interception-tools
           packages:
             - interception-tools
-        - repo: copr:copr.fedorainfracloud.org:deltacopy:darkly
-          packages:
-            - darkly
         - repo: copr:copr.fedorainfracloud.org:atim:starship
           packages:
             - starship
@@ -87,6 +84,13 @@ modules:
       skip-unavailable: false
       skip-broken: false
       allow-erasing: false
+  - type: dnf
+    install:
+      skip-broken: true
+      packages:
+        - repo: copr:copr.fedorainfracloud.org:deltacopy:darkly
+          packages:
+            - darkly
 
 
 #  - type: rpm-ostree
