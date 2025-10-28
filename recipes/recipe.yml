@@ -247,14 +247,11 @@ modules:
     snippets:
       - |
         # move anything that might be in /usr/lib/opt to /usr/lib/bluebuild-optfix
-        echo ==============testtesttest================
-        ls /usr/lib && true
-        ls /usr/lib/opt && true
-        ls /usr/lib/bluebuild-optfix && true
-        mkdir -p /usr/lib/bluebuild-optfix
-        find /usr/lib/opt -not -path /usr/lib/opt -print -exec mv {} /usr/lib/bluebuild-optfix/ \;
+        #mkdir -p /usr/lib/bluebuild-optfix
+        #find /usr/lib/opt -not -path /usr/lib/opt -print -exec mv {} /usr/lib/bluebuild-optfix/ \;
         # link /usr/lib/bluebuild-optfix to /usr/lib/opt
-        rmdir /usr/lib/opt
-        ln -s /usr/lib/bluebuild-optfix /usr/lib/opt
+        #rmdir /usr/lib/opt
+        #ln -s /usr/lib/bluebuild-optfix /usr/lib/opt
+        mv /usr/lib/opt /usr/lib/bluebuild-optfix
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
