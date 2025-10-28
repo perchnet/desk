@@ -42,7 +42,7 @@ modules:
         - repo: copr:copr.fedorainfracloud.org:atim:starship
           packages:
             - starship
-        - repo: https://packages.microsoft.com/yumrepos/edge/config.repo
+        - repo: edge-yum
           packages:
             - microsoft-edge-beta
             - microsoft-edge-stable
@@ -51,10 +51,7 @@ modules:
         - repo: terra
           packages:
             - zed
-        - repo: https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
-          packages:
-            - teamviewer
-
+        - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
         - chromium
         - dialog
         - elementary-files
@@ -68,7 +65,7 @@ modules:
         - yaml-cpp-devel
         - zoxide
     replace:
-      - from-repo: https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
+      - from-repo: tailscale-unstable
         packages:
           - tailscale
         install-weak-deps: true
