@@ -247,6 +247,7 @@ modules:
     snippets:
       - |
         # move anything that might be in /usr/lib/opt to /usr/lib/bluebuild-optfix
+        mkdir -p /usr/lib/bluebuild-optfix
         find /usr/lib/opt -not -path /usr/lib/opt -print -exec mv {} /usr/lib/bluebuild-optfix \;
         # link /usr/lib/bluebuild-optfix to /usr/lib/opt
         ln -s /usr/lib/bluebuild-optfix /usr/lib/opt
