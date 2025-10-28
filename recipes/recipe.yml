@@ -18,15 +18,19 @@ modules:
     scripts:
       - "before-packages.sh"
   - type: dnf
-    group-install:
-      packages:
-        - cosmic-desktop
-        - cosmic-desktop-apps
-      with-optional: true
-      install-weak-deps: true
-      skip-unavailable: false
-      skip-broken: false
-      allow-erasing: false
+    repos:
+      cleanup: true
+      copr:
+        - ublue-os/staging
+        - ublue-os/packages
+        - scottames/ghostty
+        - brirec/interception-tools
+        - deltacopy/darkly
+        - atim/starship
+      files:
+        - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
+        - https://packages.microsoft.com/yumrepos/edge/config.repo
+
     install:
       packages:
         - repo: copr:copr.fedorainfracloud.org:scottames:ghostty
@@ -74,6 +78,15 @@ modules:
         skip-unavailable: false
         skip-broken: false
         allow-erasing: false
+    group-install:
+      packages:
+        - cosmic-desktop
+        - cosmic-desktop-apps
+      with-optional: true
+      install-weak-deps: true
+      skip-unavailable: false
+      skip-broken: false
+      allow-erasing: false
 
 
 #  - type: rpm-ostree
