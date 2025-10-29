@@ -9,7 +9,7 @@ description: https://github.com/perchnet/desk
 # base-image: ghcr.io/ublue-os/silverblue-main
 #base-image: ghcr.io/ublue-os/cosmic-kinoite
 base-image: ghcr.io/ublue-os/bluefin-dx
-image-version: 42 # latest is also supported if you want new updates ASAP
+image-version: 43 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -45,21 +45,16 @@ modules:
         - repo: copr:copr.fedorainfracloud.org:atim:starship
           packages:
             - starship
-        #- repo: edge-yum
-        #  packages:
-        - microsoft-edge-beta
-        - microsoft-edge-stable
-            # - microsoft-edge-dev
-            # - microsoft-edge-canary
         - repo: terra
           packages:
             - zed
-        - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
         - chromium
         - dialog
         - elementary-files
         - falkon
         - libevdev-devel
+        - microsoft-edge-beta
+        - microsoft-edge-stable
         - neovim
         - podlet
         - waypipe
@@ -67,6 +62,13 @@ modules:
         - yaml-cpp
         - yaml-cpp-devel
         - zoxide
+        - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+        - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
+        - https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
+        - https://prerelease.keybase.io/keybase_amd64.rpm
+        - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
+        - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
+        - https://github.com/xpipe-io/xpipe-ptb/releases/latest/download/xpipe-installer-linux-x86_64.rpm
     replace:
       - from-repo: tailscale-unstable
         packages:
