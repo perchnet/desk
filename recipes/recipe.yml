@@ -9,7 +9,7 @@ description: https://github.com/perchnet/desk
 # base-image: ghcr.io/ublue-os/silverblue-main
 #base-image: ghcr.io/ublue-os/cosmic-kinoite
 base-image: ghcr.io/ublue-os/bluefin-dx
-image-version: 43 # latest is also supported if you want new updates ASAP
+image-version: 42 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -245,16 +245,10 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
-  - type: script
-    snippets:
-      - |
-        # move anything that might be in /usr/lib/opt to /usr/lib/bluebuild-optfix
-        #mkdir -p /usr/lib/bluebuild-optfix
-        #find /usr/lib/opt -not -path /usr/lib/opt -print -exec mv {} /usr/lib/bluebuild-optfix/ \;
-        # link /usr/lib/bluebuild-optfix to /usr/lib/opt
-        #rmdir /usr/lib/opt
-        #ln -s /usr/lib/bluebuild-optfix /usr/lib/opt
-        mv /usr/lib/opt /usr/lib/bluebuild-optfix
-        ln -s /usr/lib/bluebuild-optfix /usr/lib/opt
+  #- type: script
+  #  snippets:
+  #    - |
+  #      mv /usr/lib/opt /usr/lib/bluebuild-optfix
+  #      ln -s /usr/lib/bluebuild-optfix /usr/lib/opt
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
