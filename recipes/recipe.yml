@@ -30,6 +30,7 @@ modules:
         - brirec/interception-tools
         - deltacopy/darkly
         - atim/starship
+        - yalter/niri
       files:
         - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
         - https://packages.microsoft.com/yumrepos/edge/config.repo
@@ -56,6 +57,7 @@ modules:
         - microsoft-edge-beta
         - microsoft-edge-stable
         - neovim
+        - niri
         - podlet
         - waypipe
         - xeyes
