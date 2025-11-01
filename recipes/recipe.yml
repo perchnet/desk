@@ -31,6 +31,7 @@ modules:
         - deltacopy/darkly
         - atim/starship
         - yalter/niri
+        - errornointernet/quickshell
       files:
         - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
         - https://packages.microsoft.com/yumrepos/edge/config.repo
@@ -50,15 +51,18 @@ modules:
           packages:
             - zed
         - chromium
+        - cliphist
         - dialog
         - elementary-files
         - falkon
         - libevdev-devel
+        - mate-polkit
         - microsoft-edge-beta
         - microsoft-edge-stable
         - neovim
         - niri
         - podlet
+        - quickshell
         - waypipe
         - xeyes
         - yaml-cpp
