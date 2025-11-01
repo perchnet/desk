@@ -8,7 +8,8 @@ description: https://github.com/perchnet/desk
 # the base image to build on top of (FROM) and the version tag to use
 # base-image: ghcr.io/ublue-os/silverblue-main
 #base-image: ghcr.io/ublue-os/cosmic-kinoite
-base-image: ghcr.io/ublue-os/bluefin-dx
+#base-image: ghcr.io/ublue-os/bluefin-dx
+base-image: ghcr.io/zirconium-dev/zirconium
 image-version: 43 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
