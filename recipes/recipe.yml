@@ -83,6 +83,7 @@ modules:
       packages:
         - cosmic-desktop
         - cosmic-desktop-apps
+        - lxqt-desktop
       with-optional: true
       install-weak-deps: true
       skip-unavailable: false
