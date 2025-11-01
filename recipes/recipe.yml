@@ -10,7 +10,7 @@ description: https://github.com/perchnet/desk
 #base-image: ghcr.io/ublue-os/cosmic-kinoite
 #base-image: ghcr.io/ublue-os/bluefin-dx
 base-image: ghcr.io/zirconium-dev/zirconium
-image-version: 43 # latest is also supported if you want new updates ASAP
+image-version: latest
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
