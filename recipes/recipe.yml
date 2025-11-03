@@ -63,6 +63,7 @@ modules:
         - yaml-cpp
         - yaml-cpp-devel
         - zoxide
+        - https://downloads.1password.com/linux/rpm/edge/x86_64/repodata/1password-latest.rpm
         - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
         - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
         - https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
@@ -95,73 +96,92 @@ modules:
           packages:
             - darkly
 
+  - type: script
+    snippets:
+      - |
+          #!/usr/bin/env bash
 
-#  - type: rpm-ostree
-#    repos:
-#      #- https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
-#      # - https://copr.fedorainfracloud.org/coprs/brirec/interception-tools/repo/fedora-%OS_VERSION%/brirec-interception-tools-fedora-%OS_VERSION%.repo
-#      #- https://copr.fedorainfracloud.org/coprs/deltacopy/darkly/repo/fedora-%OS_VERSION%/deltacopy-darkly-fedora-%OS_VERSION%.repo
-#      # - https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/repo/fedora-%OS_VERSION%/pgdev-ghostty-fedora-%OS_VERSION%.repo
-#      # - https://copr.fedorainfracloud.org/coprs/che/nerd-fonts/repo/fedora-%OS_VERSION%/che-nerd-fonts-fedora-%OS_VERSION%.repo
-#      #- https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
-#      - https://packages.microsoft.com/yumrepos/edge/config.repo
-#      #- https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/yum/windsurf.repo
-#    install:
-#      #- cosmic-desktop
-#      #- interception-tools
-#      - chromium
-#      - darkly
-#      - dialog
-#      - elementary-files
-#      - falkon
-#      #- ghostty
-#      - libevdev-devel
-#      - microsoft-edge-beta
-#      - microsoft-edge-stable
-#      - neovim
-#      - podlet
-#      - waypipe
-#      #- windsurf
-#      - xeyes
-#      - yaml-cpp
-#      - yaml-cpp-devel
-#      - zed
-#      - zoxide
-#      - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-#      - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
-#      - https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
-#      - https://prerelease.keybase.io/keybase_amd64.rpm
-#      - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
-#      - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
-#      - https://github.com/xpipe-io/xpipe-ptb/releases/latest/download/xpipe-installer-linux-x86_64.rpm
-#    remove: ["tailscale"] # to make room for tailscale-unstable
-#  - type: dnf
-#    repos:
-#      files:
-#        remove:
-#          - tailscale-stable
-#        add:
-#          - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
-#  - type: dnf
-#    install:
-#      packages:
-#        - repo: tailscale-unstable
-#          packages:
-#            - tailscale
-  #- type: script
-  #  snippets:
-  #    - dnf config-manager addrepo --from-repofile https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
-  #    - dnf install tailscale --from-repo=tailscale-unstable
+          set -ouex pipefail
 
-  #remove: [ "xwaylandvideobridge" ]
-  #optfix:
-  #  - google
-  #  - keybase
-  #  - microsoft
-  #  - teamviewer
-  #  - vivaldi
-  #  - xpipe
-  #  # https://blue-build.org/reference/modules/rpm-ostree/#optfix-optional-array
+          #### Variables
+
+          # Can be "beta" or "stable"
+          RELEASE_CHANNEL="${ONEPASSWORD_RELEASE_CHANNEL:-stable}"
+
+          # Must be over 1000
+          GID_ONEPASSWORD="${GID_ONEPASSWORD:-1500}"
+
+          # Must be over 1000
+          GID_ONEPASSWORDCLI="${GID_ONEPASSWORDCLI:-1600}"
+
+          cd /usr/lib/1Password
+
+          # chrome-sandbox requires the setuid bit to be specifically set.
+          # See https://github.com/electron/electron/issues/17972
+          chmod 4755 /usr/lib/1Password/chrome-sandbox
+
+          # Normally, after-install.sh would create a group,
+          # "onepassword", right about now. But if we do that during
+          # the ostree build it'll disappear from the running system!
+          # I'm going to work around that by hardcoding GIDs and
+          # crossing my fingers that nothing else steps on them.
+          # These numbers _should_ be okay under normal use, but
+          # if there's a more specific range that I should use here
+          # please submit a PR!
+
+          # Specifically, GID must be > 1000, and absolutely must not
+          # conflict with any real groups on the deployed system.
+          # Normal user group GIDs on Fedora are sequential starting
+          # at 1000, so let's skip ahead and set to something higher.
+
+          # BrowserSupport binary needs setgid. This gives no extra permissions to the binary.
+          # It only hardens it against environmental tampering.
+          BROWSER_SUPPORT_PATH="/usr/lib/1Password/1Password-BrowserSupport"
+
+
+          # Add .desktop file and icons
+          if [ -d /usr/share/applications ]; then
+            # xdg-desktop-menu will only be available if xdg-utils is installed, which is likely but not guaranteed
+            if [ -n "$(which xdg-desktop-menu)" ]; then
+              xdg-desktop-menu install --mode system --novendor /usr/lib/1Password/resources/1password.desktop
+              xdg-desktop-menu forceupdate
+            else
+              install -m0644 /usr/lib/1Password/resources/1password.desktop /usr/share/applications
+            fi
+          fi
+          if [ -d /usr/share/icons ]; then
+            cp -rf /usr/lib/1Password/resources/icons/* /usr/share/icons/
+            # Update icon cache
+            gtk-update-icon-cache -f -t /usr/share/icons/hicolor/
+          fi
+
+          chgrp "${GID_ONEPASSWORD}" "${BROWSER_SUPPORT_PATH}"
+          chmod g+s "${BROWSER_SUPPORT_PATH}"
+
+          # onepassword-cli also needs its own group and setgid, like the other helpers.
+          chgrp "${GID_ONEPASSWORDCLI}" /usr/bin/op
+          chmod g+s /usr/bin/op
+
+          # Dynamically create the required groups via sysusers.d
+          # and set the GID based on the files we just chgrp'd
+          cat >/usr/lib/sysusers.d/onepassword.conf <<EOF
+          g onepassword ${GID_ONEPASSWORD}
+          EOF
+          cat >/usr/lib/sysusers.d/onepassword-cli.conf <<EOF
+          g onepassword-cli ${GID_ONEPASSWORDCLI}
+          EOF
+
+          # remove the sysusers.d entries created by onepassword RPMs.
+          # They don't magically set the GID like we need them to.
+          rm -f /usr/lib/sysusers.d/30-rpmostree-pkg-group-onepassword.conf
+          rm -f /usr/lib/sysusers.d/30-rpmostree-pkg-group-onepassword-cli.conf
+
+          # Register path symlink
+          # We do this via tmpfiles.d so that it is created by the live system.
+          cat >/usr/lib/tmpfiles.d/onepassword.conf <<EOF
+          L  /opt/1Password  -  -  -  -  /usr/lib/1Password
+          EOF
+
   - type: script
     snippets:
       - "rm /etc/yum.repos.d/teamviewer.repo" # because its signing is broken and i'm baking the rpm in anyway...
