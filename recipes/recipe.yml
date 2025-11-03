@@ -63,7 +63,7 @@ modules:
         - yaml-cpp
         - yaml-cpp-devel
         - zoxide
-        - https://downloads.1password.com/linux/rpm/edge/x86_64/repodata/1password-latest.rpm
+        - https://downloads.1password.com/linux/rpm/edge/x86_64//1password-latest.rpm
         - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
         - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
         - https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
