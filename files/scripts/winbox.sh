@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
-# maketmp dir
+cleanup() {
+	cd /
+	rm -fR "${TEMP_DIR}"
+}
+trap cleanup EXIT
 TEMP_DIR=$(mktemp -d)
 cd "${TEMP_DIR}"
 
