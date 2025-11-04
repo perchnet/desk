@@ -5,7 +5,7 @@ CURSOR_URL="$(curl -L "${CURSOR_API_URL}" | jq -r .downloadUrl)"
 echo "Downloading Cursor AppImage..."
 tmpdir="$(mktemp -d)"
 cd "${tmpdir}"
-curl -L "${CURSOR_URL}" -o cursor.appimage
+curl --retry 5 --retry-max-time 120 -L "${CURSOR_URL}" -o cursor.appimage
 chmod +x cursor.appimage
 ./cursor.appimage --appimage-extract
 cp -R squashfs-root/usr /

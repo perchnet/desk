@@ -6,14 +6,14 @@ TEMP_DIR=$(mktemp -d)
 cd "${TEMP_DIR}"
 
 # get the WinBox AUR package, because that's the easiest way to check the latest version...
-curl -L https://aur.archlinux.org/cgit/aur.git/snapshot/winbox.tar.gz | tar -xzv
+curl --retry 5 --retry-max-time 120 -L https://aur.archlinux.org/cgit/aur.git/snapshot/winbox.tar.gz | tar -xzv
 cd winbox
 source PKGBUILD
 
 # "source=WinBox-4.0beta17.zip::https://download.mikrotik.com/routeros/winbox/4.0beta17/WinBox_Linux.zip"
 URL="${source##*::}"
 ZIPFile="${source%%::*}"
-curl -L "${URL}" -o "${ZIPFile}"
+curl --retry 5 --retry-max-time 120 -L "${URL}" -o "${ZIPFile}"
 unzip "${ZIPFile}"
 srcdir="$(pwd)"
 pkgdir="/"

@@ -11,7 +11,7 @@ RELEASES_API(){
     local USAGE="Usage: RELEASES_API user/repo"
     local REPO="${1:?"${USAGE}"}"
     local URL="https://api.github.com/repos/${REPO}/releases/latest"
-    curl -s "${URL}"
+    curl --retry 5 --retry-max-time 120 -s "${URL}"
 }
 PARSE_FOR_LATEST(){
     local STDIN=$(</dev/stdin)
