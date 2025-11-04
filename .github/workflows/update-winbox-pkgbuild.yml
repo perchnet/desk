@@ -1,0 +1,21 @@
+name: Update WinBox PKGBUILD
+on:
+  schedule:
+    - cron: "0 7 * * *" # daily at 07:00 UTC
+  workflow_dispatch:
+jobs:
+  update-winbox-pkgbuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Update WinBox PKGBUILD
+        run: curl -fsSL 'https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=winbox' -o './files/data/winbox.PKGBUILD'
+      - name: Open PR if changed
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: 'Update WinBox PKGBUILD to latest version'
+          title: 'Update WinBox PKGBUILD'
+          body: |
+              This PR updates the WinBox PKGBUILD to the latest version from AUR.
+              Please review and merge if everything looks good.
