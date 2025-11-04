@@ -15,6 +15,10 @@ image-version: latest
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
+  - type: files
+    files:
+      - source: data
+        destination: /tmp/
   - type: script
     scripts:
       - "before-packages.sh"
