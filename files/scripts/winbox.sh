@@ -3,7 +3,7 @@ set -euxo pipefail
 
 #shellcheck source=../data/winbox/PKGBUILD
 source /tmp/winbox/PKGBUILD
-srcdir="/tmp/winbox/winbox"
+srcdir="/tmp/winbox/"
 cd "${srcdir}"
 
 # defined in the PKGBUILD
