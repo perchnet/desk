@@ -15,10 +15,6 @@ image-version: latest
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - type: files
-    files:
-      - source: data
-        destination: /tmp/
   - type: script
     scripts:
       - "before-packages.sh"
@@ -104,6 +100,13 @@ modules:
   - type: script
     snippets:
       - "rm /etc/yum.repos.d/teamviewer.repo" # because its signing is broken and i'm baking the rpm in anyway...
+  - type: script
+    snippets:
+      - "mkdir -p /tmp/"
+  - type: files
+    files:
+      - source: data
+        destination: /tmp/
   - type: script
     scripts:
       - "winbox.sh"
