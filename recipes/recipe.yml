@@ -34,8 +34,6 @@ modules:
       files:
         - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
         - https://packages.microsoft.com/yumrepos/edge/config.repo
-        - https://packages.microsoft.com/yumrepos/vscode/config.repo
-
     install:
       packages:
         - repo: copr:copr.fedorainfracloud.org:scottames:ghostty
@@ -51,7 +49,6 @@ modules:
           packages:
             - zed
         - chromium
-        - code
         - dialog
         - elementary-files
         - falkon
@@ -93,6 +90,13 @@ modules:
       skip-unavailable: false
       skip-broken: false
       allow-erasing: false
+  - type: dnf
+    repos:
+      files:
+        - https://packages.microsoft.com/yumrepos/vscode/config.repo
+    install:
+      packages:
+        - code
   - type: dnf
     install:
       skip-broken: true
