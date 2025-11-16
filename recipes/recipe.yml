@@ -34,7 +34,7 @@ modules:
       files:
         - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
         - https://packages.microsoft.com/yumrepos/edge/config.repo
-        - https://packages.microsoft.com/yumrepos/vscode/config.repo
+        #- https://packages.microsoft.com/yumrepos/vscode/config.repo
 
     install:
       packages:
