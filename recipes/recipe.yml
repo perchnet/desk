@@ -34,6 +34,8 @@ modules:
       files:
         - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
         - https://packages.microsoft.com/yumrepos/edge/config.repo
+        - https://packages.microsoft.com/yumrepos/vscode/config.repo
+
     install:
       packages:
         - repo: copr:copr.fedorainfracloud.org:scottames:ghostty
@@ -73,6 +75,7 @@ modules:
         - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
         - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
         - https://github.com/xpipe-io/xpipe-ptb/releases/latest/download/xpipe-installer-linux-x86_64.rpm
+        - https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64
     replace:
       - from-repo: tailscale-unstable
         packages:
@@ -90,13 +93,6 @@ modules:
       skip-unavailable: false
       skip-broken: false
       allow-erasing: false
-  - type: dnf
-    repos:
-      files:
-        - https://packages.microsoft.com/yumrepos/vscode/config.repo
-    install:
-      packages:
-        - code
   - type: dnf
     install:
       skip-broken: true
