@@ -8,8 +8,9 @@ description: https://github.com/perchnet/desk
 # the base image to build on top of (FROM) and the version tag to use
 # base-image: ghcr.io/ublue-os/silverblue-main
 #base-image: ghcr.io/ublue-os/cosmic-kinoite
-base-image: ghcr.io/ublue-os/bluefin-dx
-image-version: 43 # latest is also supported if you want new updates ASAP
+#base-image: ghcr.io/ublue-os/bluefin-dx
+base-image: ghcr.io/zirconium-dev/zirconium
+image-version: latest
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -33,6 +34,7 @@ modules:
       files:
         - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
         - https://packages.microsoft.com/yumrepos/edge/config.repo
+        #- https://packages.microsoft.com/yumrepos/vscode/config.repo
 
     install:
       packages:
@@ -53,6 +55,7 @@ modules:
         - elementary-files
         - falkon
         - libevdev-devel
+        - idevicerestore
         - microsoft-edge-beta
         - microsoft-edge-stable
         - neovim
@@ -61,7 +64,10 @@ modules:
         - xeyes
         - yaml-cpp
         - yaml-cpp-devel
+        - zsh
         - zoxide
+        - https://downloads.1password.com/linux/rpm/edge/x86_64/1password-latest.rpm
+        - https://downloads.1password.com/linux/rpm/edge/x86_64/1password-cli-latest.x86_64.rpm
         - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
         - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
         - https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
@@ -69,6 +75,7 @@ modules:
         - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
         - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
         - https://github.com/xpipe-io/xpipe-ptb/releases/latest/download/xpipe-installer-linux-x86_64.rpm
+        - https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64
     replace:
       - from-repo: tailscale-unstable
         packages:
@@ -94,80 +101,21 @@ modules:
           packages:
             - darkly
 
-
-#  - type: rpm-ostree
-#    repos:
-#      #- https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
-#      # - https://copr.fedorainfracloud.org/coprs/brirec/interception-tools/repo/fedora-%OS_VERSION%/brirec-interception-tools-fedora-%OS_VERSION%.repo
-#      #- https://copr.fedorainfracloud.org/coprs/deltacopy/darkly/repo/fedora-%OS_VERSION%/deltacopy-darkly-fedora-%OS_VERSION%.repo
-#      # - https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/repo/fedora-%OS_VERSION%/pgdev-ghostty-fedora-%OS_VERSION%.repo
-#      # - https://copr.fedorainfracloud.org/coprs/che/nerd-fonts/repo/fedora-%OS_VERSION%/che-nerd-fonts-fedora-%OS_VERSION%.repo
-#      #- https://copr.fedorainfracloud.org/coprs/ryanabx/cosmic-epoch/repo/fedora-%OS_VERSION%/ryanabx-cosmic-epoch-fedora-%OS_VERSION%.repo
-#      - https://packages.microsoft.com/yumrepos/edge/config.repo
-#      #- https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/yum/windsurf.repo
-#    install:
-#      #- cosmic-desktop
-#      #- interception-tools
-#      - chromium
-#      - darkly
-#      - dialog
-#      - elementary-files
-#      - falkon
-#      #- ghostty
-#      - libevdev-devel
-#      - microsoft-edge-beta
-#      - microsoft-edge-stable
-#      - neovim
-#      - podlet
-#      - waypipe
-#      #- windsurf
-#      - xeyes
-#      - yaml-cpp
-#      - yaml-cpp-devel
-#      - zed
-#      - zoxide
-#      - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-#      - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
-#      - https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
-#      - https://prerelease.keybase.io/keybase_amd64.rpm
-#      - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
-#      - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
-#      - https://github.com/xpipe-io/xpipe-ptb/releases/latest/download/xpipe-installer-linux-x86_64.rpm
-#    remove: ["tailscale"] # to make room for tailscale-unstable
-#  - type: dnf
-#    repos:
-#      files:
-#        remove:
-#          - tailscale-stable
-#        add:
-#          - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
-#  - type: dnf
-#    install:
-#      packages:
-#        - repo: tailscale-unstable
-#          packages:
-#            - tailscale
-  #- type: script
-  #  snippets:
-  #    - dnf config-manager addrepo --from-repofile https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
-  #    - dnf install tailscale --from-repo=tailscale-unstable
-
-  #remove: [ "xwaylandvideobridge" ]
-  #optfix:
-  #  - google
-  #  - keybase
-  #  - microsoft
-  #  - teamviewer
-  #  - vivaldi
-  #  - xpipe
-  #  # https://blue-build.org/reference/modules/rpm-ostree/#optfix-optional-array
   - type: script
     snippets:
       - "rm /etc/yum.repos.d/teamviewer.repo" # because its signing is broken and i'm baking the rpm in anyway...
   - type: script
+    snippets:
+      - "mkdir -p /tmp/"
+  - type: files
+    files:
+      - source: data
+        destination: /tmp/
+  - type: script
     scripts:
       - "winbox.sh"
       - "install_cursor_ai.sh"
+      - "install-1p.sh"
       # - "keymapper.sh"
 
   - type: default-flatpaks@v1
@@ -230,7 +178,7 @@ modules:
   - type: bling
     install:
       # - ublue-update # https://github.com/ublue-os/ublue-update
-      - 1password # install 1Password (stable) and `op` CLI tool
+      #- 1password # install 1Password (stable) and `op` CLI tool
       - dconf-update-service # a service unit that updates the dconf db on boot
 
   - type: bin-wrapper
