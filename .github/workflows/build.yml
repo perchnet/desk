@@ -27,7 +27,7 @@ jobs:
       matrix:
         rechunk:
           - rechunked
-          - not-rechunked
+          #- not-rechunked
         recipe:
           # !! Add your recipes here
           - recipe.yml
