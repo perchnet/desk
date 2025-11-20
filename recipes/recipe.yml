@@ -38,9 +38,9 @@ modules:
 
     install:
       packages:
-        - repo: copr:copr.fedorainfracloud.org:scottames:ghostty
-          packages:
-            - ghostty
+        #- repo: copr:copr.fedorainfracloud.org:scottames:ghostty
+        #  packages:
+        #    - ghostty
         - repo: copr:copr.fedorainfracloud.org:brirec:interception-tools
           packages:
             - interception-tools
