@@ -193,6 +193,11 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+  - type: copy
+    from: ghcr.io/perchnet/interception-vimproved:latest
+    src: /usr/
+    dest: /usr
+
   #- type: script
   #  snippets:
   #    - |
