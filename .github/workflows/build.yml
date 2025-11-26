@@ -35,11 +35,13 @@ jobs:
       - uses: firebuild/apt-eatmydata-action@v1
       # the build is fully handled by the reusable github action
       - name: Build Custom Image
-        uses: blue-build/github-action@v1.9
+        #uses: blue-build/github-action@v1.9
+        uses: blue-build/github-action@main
         with:
           recipe: ${{ matrix.recipe }}
           #rechunk: ${{ matrix.rechunk == 'rechunked' && 'true' || 'false' }}
-          build_chunked_oci: ${{ matrix.rechunk == 'rechunked' && 'true' || 'false' }}
+          #build_chunked_oci: ${{ matrix.rechunk == 'rechunked' && 'true' || 'false' }}
+          build_chunked_oci: ${{ github.ref_name == github.event.repository.default_branch && 'true' || 'false' }}
           cosign_private_key: ${{ secrets.SIGNING_SECRET }}
           registry_token: ${{ github.token }}
           pr_event_number: ${{ github.event.number }}
