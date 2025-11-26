@@ -38,7 +38,8 @@ jobs:
         uses: blue-build/github-action@v1.9
         with:
           recipe: ${{ matrix.recipe }}
-          rechunk: ${{ matrix.rechunk == 'rechunked' && 'true' || 'false' }}
+          #rechunk: ${{ matrix.rechunk == 'rechunked' && 'true' || 'false' }}
+          build_chunked_oci: ${{ matrix.rechunk == 'rechunked' && 'true' || 'false' }}
           cosign_private_key: ${{ secrets.SIGNING_SECRET }}
           registry_token: ${{ github.token }}
           pr_event_number: ${{ github.event.number }}
