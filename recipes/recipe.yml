@@ -27,9 +27,9 @@ modules:
       copr:
         - ublue-os/staging
         - ublue-os/packages
-        - scottames/ghostty
+        #- scottames/ghostty
         - brirec/interception-tools
-        - deltacopy/darkly
+        #- deltacopy/darkly
         - atim/starship
       files:
         - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
@@ -50,31 +50,28 @@ modules:
         - repo: terra
           packages:
             - zed
-        - chromium
+        # - chromium
         - dialog
-        - elementary-files
-        - falkon
+        # - elementary-files
         - libevdev-devel
-        - idevicerestore
-        - microsoft-edge-beta
+        # - idevicerestore
+        # - microsoft-edge-beta
         - microsoft-edge-stable
         - neovim
-        - podlet
         - waypipe
         - xeyes
         - yaml-cpp
-        - yaml-cpp-devel
+        #- yaml-cpp-devel
         - zsh
         - zoxide
         - https://downloads.1password.com/linux/rpm/edge/x86_64/1password-latest.rpm
         - https://downloads.1password.com/linux/rpm/edge/x86_64/1password-cli-latest.x86_64.rpm
-        - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+        #- https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
         - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
-        - https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
+        #- https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
         - https://prerelease.keybase.io/keybase_amd64.rpm
-        - https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
+        #- https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
         - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
-        - https://github.com/xpipe-io/xpipe-ptb/releases/latest/download/xpipe-installer-linux-x86_64.rpm
         - https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64
     replace:
       - from-repo: tailscale-unstable
@@ -84,22 +81,6 @@ modules:
         skip-unavailable: false
         skip-broken: false
         allow-erasing: false
-    group-install:
-      packages:
-        - cosmic-desktop
-        - cosmic-desktop-apps
-      with-optional: true
-      install-weak-deps: true
-      skip-unavailable: false
-      skip-broken: false
-      allow-erasing: false
-  - type: dnf
-    install:
-      skip-broken: true
-      packages:
-        - repo: copr:copr.fedorainfracloud.org:deltacopy:darkly
-          packages:
-            - darkly
 
   - type: script
     snippets:
@@ -114,7 +95,7 @@ modules:
   - type: script
     scripts:
       - "winbox.sh"
-      - "install_cursor_ai.sh"
+      #- "install_cursor_ai.sh"
       - "install-1p.sh"
       # - "keymapper.sh"
 
@@ -167,14 +148,6 @@ modules:
       - --enable-features=UseOzonePlatform
       - --no-sandbox
 
-  - type: bin-wrapper
-    source: ghcr.io/perchnet/modules/bin-wrapper
-    bin: /usr/bin/windsurf
-    flags:
-      - --ozone-platform-hint=auto
-      - --enable-features=UseOzonePlatform
-      - --no-sandbox
-
   - type: bling
     install:
       # - ublue-update # https://github.com/ublue-os/ublue-update
@@ -197,11 +170,5 @@ modules:
     from: ghcr.io/perchnet/interception-vimproved:latest
     src: /usr/
     dest: /usr
-
-  #- type: script
-  #  snippets:
-  #    - |
-  #      mv /usr/lib/opt /usr/lib/bluebuild-optfix
-  #      ln -s /usr/lib/bluebuild-optfix /usr/lib/opt
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
