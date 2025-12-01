@@ -171,4 +171,8 @@ modules:
     src: /usr/
     dest: /usr
 
+  - type: script
+    snippets:
+      - "cd /usr/share/zirconium/zdots && git remote set-url origin https://github.com/perchnet/zdots && git fetch && git switch perchnet/main"
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
