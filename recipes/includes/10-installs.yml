@@ -1,0 +1,91 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+---
+modules:
+  - type: script
+    scripts:
+      - "before-packages.sh"
+  - type: script
+    snippets:
+      - "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release -y"
+  - type: dnf
+    repos:
+      cleanup: true
+      copr:
+        - ublue-os/staging
+        - ublue-os/packages
+        #- scottames/ghostty
+        - brirec/interception-tools
+        #- deltacopy/darkly
+        - atim/starship
+      files:
+        - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
+        - https://packages.microsoft.com/yumrepos/edge/config.repo
+        #- https://packages.microsoft.com/yumrepos/vscode/config.repo
+
+    install:
+      packages:
+        #- repo: copr:copr.fedorainfracloud.org:scottames:ghostty
+        #  packages:
+        #    - ghostty
+        - repo: copr:copr.fedorainfracloud.org:brirec:interception-tools
+          packages:
+            - interception-tools
+        - repo: copr:copr.fedorainfracloud.org:atim:starship
+          packages:
+            - starship
+        - repo: terra
+          packages:
+            - zed
+        # - chromium
+        - dialog
+        # - elementary-files
+        - libevdev-devel
+        # - idevicerestore
+        # - microsoft-edge-beta
+        - microsoft-edge-stable
+        - neovim
+        - waypipe
+        - xeyes
+        - yaml-cpp
+        #- yaml-cpp-devel
+        - zsh
+        - zoxide
+        - https://downloads.1password.com/linux/rpm/edge/x86_64/1password-latest.rpm
+        - https://downloads.1password.com/linux/rpm/edge/x86_64/1password-cli-latest.x86_64.rpm
+        #- https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+        - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
+        #- https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
+        - https://prerelease.keybase.io/keybase_amd64.rpm
+        #- https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
+        - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
+        - https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64
+    replace:
+      - from-repo: tailscale-unstable
+        packages:
+          - tailscale
+        install-weak-deps: true
+        skip-unavailable: false
+        skip-broken: false
+        allow-erasing: false
+
+  - type: script
+    snippets:
+      - "rm /etc/yum.repos.d/teamviewer.repo" # because its signing is broken and i'm baking the rpm in anyway...
+
+  - type: copy
+    from: ghcr.io/perchnet/interception-vimproved:latest
+    src: /usr/
+    dest: /usr
+
+  - type: script
+    snippets:
+      - "mkdir -p /tmp/"
+  - type: files
+    files:
+      - source: data
+        destination: /tmp/
+  - type: script
+    scripts:
+      - "winbox.sh"
+      - "install-1p.sh"
+      - "install-librepods.sh"

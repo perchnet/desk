@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+---
+modules:
+  - type: script
+    snippets:
+      - "cd /usr/share/zirconium/zdots && git remote set-url origin https://github.com/perchnet/zdots && git fetch && git switch perchnet/main"
