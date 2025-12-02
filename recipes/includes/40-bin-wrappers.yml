@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+---
+modules:
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/code
+    flags:
+      - --ozone-platform-hint=auto
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/microsoft-edge-beta
+    flags:
+      - --ozone-platform-hint=auto
+      - --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/microsoft-edge-stable
+    flags:
+      - --ozone-platform-hint=auto
+      - --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/microsoft-edge-dev
+    flags:
+      - --ozone-platform-hint=auto
+      - --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/microsoft-edge-canary
+    flags:
+      - --ozone-platform-hint=auto
+      - --enable-features=UseOzonePlatform,TouchpadOverscrollHistoryNavigation
+
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/bin/cursor
+    flags:
+      - --ozone-platform-hint=auto
+      - --enable-features=UseOzonePlatform
+      - --no-sandbox
+
+  - type: bin-wrapper
+    source: ghcr.io/perchnet/modules/bin-wrapper
+    bin: /usr/lib/1Password/1password
+    flags:
+      - --ozone-platform-hint=auto
+      - --enable-features=UseOzonePlatform
