@@ -9,7 +9,8 @@ description: https://github.com/perchnet/desk
 # base-image: ghcr.io/ublue-os/silverblue-main
 #base-image: ghcr.io/ublue-os/cosmic-kinoite
 #base-image: ghcr.io/ublue-os/bluefin-dx
-base-image: ghcr.io/zirconium-dev/zirconium
+#base-image: ghcr.io/zirconium-dev/zirconium
+base-image: ghcr.io/perchnet/zirconium
 image-version: latest
 
 # module configuration, executed in order
