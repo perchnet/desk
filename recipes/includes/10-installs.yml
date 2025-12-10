@@ -13,7 +13,6 @@ modules:
       copr:
         - ublue-os/staging
         - ublue-os/packages
-        #- scottames/ghostty
         - brirec/interception-tools
         #- deltacopy/darkly
         - atim/starship
@@ -24,9 +23,6 @@ modules:
 
     install:
       packages:
-        #- repo: copr:copr.fedorainfracloud.org:scottames:ghostty
-        #  packages:
-        #    - ghostty
         - repo: copr:copr.fedorainfracloud.org:brirec:interception-tools
           packages:
             - interception-tools
@@ -38,12 +34,14 @@ modules:
             - zed
         # - chromium
         - dialog
-        # - elementary-files
+        - elementary-files
+        - firefox
+        - fuzzel
+        - ghostty
         - libevdev-devel
         # - idevicerestore
-        # - microsoft-edge-beta
+        - microsoft-edge-beta
         - microsoft-edge-stable
-        - firefox
         - neovim
         - waypipe
         - xeyes
