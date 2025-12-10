@@ -43,6 +43,7 @@ modules:
         # - idevicerestore
         # - microsoft-edge-beta
         - microsoft-edge-stable
+        - firefox
         - neovim
         - waypipe
         - xeyes
