@@ -1,11 +1,25 @@
 {
   "policies": {
+    "DisableFirefoxStudies": true,
+    "DisableTelemetry": true,
+    "FirefoxSuggest": {
+      "ImproveSuggest": false,
+      "SponsoredSuggestions": false
+    },
     "GenerativeAI": {
-      "Enabled": false,
-      "Chatbot": false,
-      "LinkPreviews": false,
-      "TabGroups": false,
-      "Locked": true,
+      "Enabled": false
+    },
+    "Preferences": {
+      "extensions.getAddons.showPane": {
+        "Status": "locked",
+        "Type": "boolean",
+        "Value": false
+      },
+      "media.gmp-gmpopenh264.enabled": {
+        "Status": "locked",
+        "Type": "boolean",
+        "Value": true
+      }
     }
   }
 }
