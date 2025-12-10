@@ -37,7 +37,7 @@ modules:
         - elementary-files
         - firefox
         - fuzzel
-        - ghostty-git
+        - ghostty
         - libevdev-devel
         # - idevicerestore
         - microsoft-edge-beta
