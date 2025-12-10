@@ -1,0 +1,11 @@
+{
+  "policies": {
+    "GenerativeAI": {
+      "Enabled": false,
+      "Chatbot": false,
+      "LinkPreviews": false,
+      "TabGroups": false,
+      "Locked": true,
+    }
+  }
+}
