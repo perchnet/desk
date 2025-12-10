@@ -17,7 +17,7 @@ jobs:
           cd files/data
           curl --retry 5 --retry-max-time 120 --retry-all-errors -fsSL 'https://aur.archlinux.org/cgit/aur.git/snapshot/winbox.tar.gz' | tar -zxv
       - name: Open PR if changed
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: 'Update WinBox PKGBUILD to latest version'
           title: 'Update WinBox PKGBUILD'
