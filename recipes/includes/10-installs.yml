@@ -4,9 +4,7 @@ modules:
   - type: script
     scripts:
       - "before-packages.sh"
-  - type: script
-    snippets:
-      - "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release -y"
+
   - type: dnf
     repos:
       cleanup: true
@@ -32,6 +30,7 @@ modules:
         - repo: terra
           packages:
             - zed
+        - antigravity
         # - chromium
         - dialog
         - elementary-files
