@@ -18,9 +18,11 @@ jobs:
         with:
           path: me
       - name: Update WinBox PKGBUILD
+        env:
+          CLONE_PATH: "${{ github.workspace }}/winbox"
         run: |
-          git clone https://aur.archlinux.org/winbox.git
-          cp -r "winbox/*" "me/files/data/winbox/"
+          git clone https://aur.archlinux.org/winbox.git "${CLONE_PATH}/winbox"
+          cp -r "${CLONE_PATH}/winbox/*" "me/files/data/winbox/"
       - name: Open PR if changed
         uses: peter-evans/create-pull-request@v7
         with:
