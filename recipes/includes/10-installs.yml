@@ -35,13 +35,13 @@ modules:
         - repo: terra
           packages:
             - zed
-            - ghostty-nightly
         - antigravity
         # - chromium
         - dialog
         - elementary-files
         - firefox
         - fuzzel
+        - ghostty-nightly
         - libevdev-devel
         # - idevicerestore
         - microsoft-edge-beta
