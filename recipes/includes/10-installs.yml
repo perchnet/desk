@@ -36,6 +36,8 @@ modules:
           packages:
             - zed
         - antigravity
+        - bluecurve-cursor-theme
+        - bluecurve-icon-theme
         # - chromium
         - dialog
         - elementary-files
