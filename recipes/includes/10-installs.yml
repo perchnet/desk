@@ -17,6 +17,7 @@ modules:
       files:
         - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
         - https://packages.microsoft.com/yumrepos/edge/config.repo
+        - https://github.com/perchnet/desk/raw/03b6ff5c055ba76820748bd4fc28338b09a64110/files/system/etc/yum.repos.d/antigravity.repo
         #- https://packages.microsoft.com/yumrepos/vscode/config.repo
 
     install:
