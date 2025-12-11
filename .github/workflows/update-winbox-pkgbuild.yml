@@ -24,7 +24,7 @@ jobs:
           git clone https://aur.archlinux.org/winbox.git "${CLONE_PATH}/winbox"
           cp -r "${CLONE_PATH}/winbox/*" "me/files/data/winbox/"
       - name: Open PR if changed
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           path: me
           commit-message: 'Update WinBox PKGBUILD to latest version'
