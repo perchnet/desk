@@ -21,7 +21,8 @@ modules:
       files:
         - https://pkgs.tailscale.com/unstable/fedora/tailscale.repo
         - https://packages.microsoft.com/yumrepos/edge/config.repo
-        - https://github.com/perchnet/desk/raw/03b6ff5c055ba76820748bd4fc28338b09a64110/files/system/etc/yum.repos.d/antigravity.repo
+        - antigravity.repo
+        - firefoxpwa.repo
         #- https://packages.microsoft.com/yumrepos/vscode/config.repo
 
     install:
@@ -39,16 +40,23 @@ modules:
         - bluecurve-cursor-theme
         - bluecurve-icon-theme
         # - chromium
+        - clevis
+        - clevis-pin-tpm2
+        - clevis-systemd
+        - clevis-udisks2
         - dialog
         - elementary-files
         - firefox
+        - firefoxpwa
         - fuzzel
         - ghostty-nightly
+        - keylime
         - libevdev-devel
         # - idevicerestore
         - microsoft-edge-beta
         - microsoft-edge-stable
         - neovim
+        - tpm2-tools
         - waypipe
         - xeyes
         - yaml-cpp
