@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '.github/workflows/update-winbox-pkgbuild.yml'
+      - 'files/data/winbox/PKGBUILD'
   schedule:
     - cron: "0 7 * * *" # daily at 07:00 UTC
   workflow_dispatch:
@@ -12,15 +15,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+        with:
+          path: me
       - name: Update WinBox PKGBUILD
         run: |
-          cd files/data
-          curl --retry 5 --retry-max-time 120 --retry-all-errors -fsSL 'https://aur.archlinux.org/cgit/aur.git/snapshot/winbox.tar.gz' | tar -zxv
+          git clone https://aur.archlinux.org/winbox.git
+          cp -r "winbox/*" "me/files/data/winbox/"
       - name: Open PR if changed
         uses: peter-evans/create-pull-request@v7
         with:
+          path: me
           commit-message: 'Update WinBox PKGBUILD to latest version'
           title: 'Update WinBox PKGBUILD'
+          reviewers: 'b-'
           body: |
               This PR updates the WinBox PKGBUILD to the latest version from AUR.
               Please review and merge if everything looks good.
