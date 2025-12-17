@@ -4,19 +4,19 @@
 modules:
   - type: script
     snippets:
-      - |
-          set -euxo pipefail
-          D="$(mktemp -d)"
-          U="https://github.com/catppuccin/plymouth"
-          T="catppuccin-frappe"
-          O="/usr/share/plymouth/themes"
-          R="f1b6012"
-          F="./themes/catppuccin-frappe"
-          cd "${D}"
-          git clone "${U}" . --no-checkout --filter=blob:none
-          git checkout "${R}"
-          find
-          sudo cp -R "${F}" "${O}"
-          sudo plymouth-set-default-theme -R "${T}"
-          cd /
-          rm -fR "${D}"
+      - >
+          set -euxo pipefail &&
+          D="$(mktemp -d)" &&
+          U="https://github.com/catppuccin/plymouth" &&
+          T="catppuccin-frappe" &&
+          O="/usr/share/plymouth/themes" &&
+          R="f1b6012" &&
+          F="./themes/catppuccin-frappe" &&
+          cd "${D}" &&
+          git clone "${U}" . --no-checkout --filter=blob:none &&
+          git checkout "${R}" &&
+          find &&
+          sudo cp -R "${F}" "${O}" &&
+          sudo plymouth-set-default-theme -R "${T}" &&
+          cd / &&
+          rm -fR "${D}" &&
