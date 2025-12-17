@@ -19,3 +19,4 @@ modules:
           sudo sed /etc/plymouth/plymouthd.conf -ie 's/^Theme=".*"$/Theme="catppuccin-frappe"/' &&
           cd / &&
           rm -fR "${D}"
+  - type: initramfs
