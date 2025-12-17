@@ -16,6 +16,6 @@ modules:
           git checkout "${R}" &&
           find &&
           sudo cp -R "${F}" "${O}" &&
-          sudo plymouth-set-default-theme -R "${T}" &&
+          sudo sed /etc/plymouth/plymouthd.conf -ie 's/^Theme=".*"$/Theme="catppuccin-frappe"/' &&
           cd / &&
           rm -fR "${D}"
