@@ -16,7 +16,7 @@ modules:
           git checkout "${R}" &&
           find &&
           sudo cp -R "${F}" "${O}" &&
-          sudo sed /etc/plymouth/plymouthd.conf -ie 's/^Theme=".*"$/Theme="catppuccin-frappe"/' &&
+          sudo sed /etc/plymouth/plymouthd.conf -i -e 's/^Theme=".*"$/Theme="catppuccin-frappe"/' &&
           cd / &&
           rm -fR "${D}"
   - type: initramfs
