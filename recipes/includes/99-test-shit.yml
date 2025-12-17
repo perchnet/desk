@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+---
+modules:
+  - type: script
+    snippets:
+      - |
+          set -euxo pipefail
+          # update /usr mtime to cause /etc/.updated to be updated
+          touch -d @1 /usr
