@@ -1,22 +1,8 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 ---
 modules:
-  - type: script
-    snippets:
-      - > # TODO: update to scripts v2 when released or begin rawdogging Containerfiles
-          set -euxo pipefail &&
-          D="$(mktemp -d)" &&
-          U="https://github.com/catppuccin/plymouth" &&
-          T="catppuccin-frappe" &&
-          O="/usr/share/plymouth/themes" &&
-          R="f1b6012" &&
-          F="./themes/catppuccin-frappe" &&
-          cd "${D}" &&
-          git clone "${U}" . --no-checkout --filter=blob:none &&
-          git checkout "${R}" &&
-          find &&
-          sudo cp -R "${F}" "${O}" &&
-          sudo sed /etc/plymouth/plymouthd.conf -i -e 's/^Theme=".*"$/Theme="catppuccin-frappe"/' &&
-          cd / &&
-          rm -fR "${D}"
+  - type: copy
+    from: ghcr.io/perchnet/catppuccin-plymouth-oci:catppuccin-frappe
+    src: /
+    dest: /
   - type: initramfs
