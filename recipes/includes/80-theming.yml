@@ -6,3 +6,9 @@ modules:
     src: /
     dest: /
   - type: initramfs
+
+  - type: script
+    snippets:
+      - >
+        git clone https://github.com/somepaulo/MoreWaita.git /tmp/MoreWaita &&
+        sudo /usr/bin/env THEMEDIR="/usr/share/icons/MoreWaita/" /tmp/MoreWaita/install.sh

@@ -89,27 +89,6 @@ modules:
     files:
       - source: data
         destination: /tmp/
-
-  - type: script
-    snippets:
-      - >
-        cd /tmp &&
-        git clone https://github.com/somepaulo/MoreWaita.git && cd MoreWaita && sudo ./install.sh"
-  - type: script
-    snippets:
-      - >
-        cd /tmp && git clone https://github.com/somepaulo/MoreWaita.git && cd MoreWaita && sudo ./install.sh"
-  - type: script
-    snippets:
-      - >
-        cd /tmp &&
-        git clone https://github.com/somepaulo/MoreWaita.git && cd MoreWaita && sudo ./install.sh"
-  - type: script
-    snippets:
-      - >
-        cd /tmp &&
-        git clone https://github.com/somepaulo/MoreWaita.git /tmp/MoreWaita &&
-        sudo /usr/bin/env THEMEDIR="/usr/share/icons/MoreWaita/" /tmp/MoreWaita/install.sh
   - type: script
     scripts:
       - "winbox.sh"
