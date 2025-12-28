@@ -5,6 +5,11 @@ modules:
     from: ghcr.io/perchnet/catppuccin-plymouth-oci:catppuccin-frappe
     src: /
     dest: /
+
+  - type: script
+    snippets:
+      - >
+        echo -e 'add_dracutmodules+=" plymouth "\n' > /usr/lib/dracut/dracut.conf.d/plymouth.conf
   - type: initramfs
 
   - type: script
