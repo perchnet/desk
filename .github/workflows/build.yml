@@ -26,8 +26,8 @@ jobs:
       fail-fast: false # stop GH from cancelling all matrix builds if one fails
       matrix:
         rechunk:
-          - rechunked
-          #- not-rechunked
+          #- rechunked # disabled because of space issues
+          - not-rechunked
         recipe:
           # !! Add your recipes here
           - recipe.yml
