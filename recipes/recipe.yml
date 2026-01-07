@@ -22,7 +22,7 @@ modules:
   - from-file: includes/40-bin-wrappers.yml
   - from-file: includes/50-bling.yml
   - from-file: includes/60-files.yml
-  - from-file: includes/70-zdots-override.yml
+  #- from-file: includes/70-zdots-override.yml
   - from-file: includes/80-theming.yml
   - from-file: includes/99-test-shit.yml
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
