@@ -5,4 +5,5 @@ modules:
     snippets:
       - > # update /usr mtime to cause /etc/.updated to be updated
           set -euxo pipefail && 
-          sudo touch -d @1 /usr
+          sudo touch /usr &&
+          echo "/usr modification date: $(stat -c %y /usr)"

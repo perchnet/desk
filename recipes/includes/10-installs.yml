@@ -55,6 +55,7 @@ modules:
         - microsoft-edge-beta
         - microsoft-edge-stable
         - neovim
+        - podman-compose
         - tpm2-tools
         - waypipe
         - xeyes
