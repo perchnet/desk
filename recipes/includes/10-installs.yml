@@ -5,10 +5,14 @@ modules:
     scripts:
       - "before-packages.sh"
 
-#  - type: script
-#    snippets:
-#      - "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release -y"
-#
+  - type: script
+    snippets:
+      - |
+        dnf config-manager setopt terra.enabled=1
+        dnf config-manager setopt terra-extras.enabled=1
+        dnf config-manager setopt terra-mesa.enabled=1
+      #- "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release -y"
+
   - type: dnf
     repos:
       cleanup: true
@@ -77,6 +81,10 @@ modules:
   - type: script
     snippets:
       - "rm /etc/yum.repos.d/teamviewer.repo" # because its signing is broken and i'm baking the rpm in anyway...
+      - |
+        dnf config-manager setopt terra.enabled=0
+        dnf config-manager setopt terra-extras.enabled=0
+        dnf config-manager setopt terra-mesa.enabled=0
 
   - type: copy
     from: ghcr.io/perchnet/interception-vimproved:latest
