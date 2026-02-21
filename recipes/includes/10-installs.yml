@@ -10,7 +10,7 @@ modules:
       - |
         dnf config-manager setopt terra.enabled=1
         dnf config-manager setopt terra-extras.enabled=1
-        dnf config-manager setopt terra-mesa.enabled=1
+      # dnf config-manager setopt terra-mesa.enabled=1
       #- "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release -y"
 
   - type: dnf
@@ -84,7 +84,7 @@ modules:
       - |
         dnf config-manager setopt terra.enabled=0
         dnf config-manager setopt terra-extras.enabled=0
-        dnf config-manager setopt terra-mesa.enabled=0
+      # dnf config-manager setopt terra-mesa.enabled=0
 
   - type: copy
     from: ghcr.io/perchnet/interception-vimproved:latest
