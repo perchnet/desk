@@ -22,6 +22,7 @@ modules:
         - brirec/interception-tools
         #- deltacopy/darkly
         - atim/starship
+        - scottames/ghostty
       files:
         - https://packages.microsoft.com/yumrepos/edge/config.repo
         - antigravity.repo
