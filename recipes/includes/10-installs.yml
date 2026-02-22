@@ -52,7 +52,7 @@ modules:
         - firefox
         - firefoxpwa
         - fuzzel
-        - ghostty-nightly
+        - ghostty #-nightly
         - keylime
         - libevdev-devel
         # - idevicerestore
@@ -60,7 +60,7 @@ modules:
         - microsoft-edge-stable
         - neovim
         - podman-compose
-        - tpm2-tools
+        # - tpm2-tools
         - waypipe
         - xeyes
         - yaml-cpp
