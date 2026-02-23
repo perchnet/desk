@@ -92,6 +92,11 @@ modules:
     src: /usr/
     dest: /usr
 
+  - type: copy
+    from: ghcr.io/perchnet/aseprite-builder:latest
+    src: /
+    dest: /
+
   - type: script
     snippets:
       - "mkdir -p /tmp/"
