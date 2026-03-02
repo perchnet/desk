@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+---
+modules:
+  - type: copy
+    from: ghcr.io/perchnet/atkinson-next-oci:latest
+    src: /
+    dest: /
+
+  - type: script
+    snippets:
+      - "fc-cache -rsfv"

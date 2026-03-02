@@ -9,7 +9,7 @@ modules:
   - type: script
     snippets:
       - >
-        echo -e 'add_dracutmodules+=" plymouth "\n' > /usr/lib/dracut/dracut.conf.d/plymouth.conf
+        echo -e 'force_add_dracutmodules+=" plymouth "\n' > /usr/lib/dracut/dracut.conf.d/plymouth.conf
   - type: initramfs
 
   - type: script

@@ -98,15 +98,12 @@ modules:
     src: /
     dest: /
 
-  - type: script
-    snippets:
-      - "mkdir -p /tmp/"
-  - type: files
-    files:
-      - source: data
-        destination: /tmp/
+  - type: copy
+    from: ghcr.io/perchnet/winbox-oci:latest
+    src: /
+    dest: /
+
   - type: script
     scripts:
-      - "winbox.sh"
       - "install-1p.sh"
       - "install-librepods.sh"
