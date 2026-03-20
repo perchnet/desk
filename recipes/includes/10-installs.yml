@@ -107,3 +107,7 @@ modules:
     scripts:
       - "install-1p.sh"
       - "install-librepods.sh"
+    snippets:
+      - |
+        cat <(echo "com.mitchellh.ghostty.desktop") /etc/xdg/xdg-terminals.list > /etc/xdg/xdg-terminals.list.new
+        mv /etc/xdg/xdg-terminals.list.new /etc/xdg/xdg-terminals.list

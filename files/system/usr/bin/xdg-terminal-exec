@@ -1,3 +1,0 @@
-#!/usr/bin/bash
-
-exec /usr/sbin/ghostty -e "$@"
