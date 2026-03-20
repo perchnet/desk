@@ -47,4 +47,4 @@ jobs:
           pr_event_number: ${{ github.event.number }}
           maximize_build_space: true
           retry_push_count: 3
-          build_opts: "-v"
+          #build_opts: "-v"
