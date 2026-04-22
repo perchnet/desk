@@ -37,9 +37,9 @@ modules:
         - repo: copr:copr.fedorainfracloud.org:atim:starship
           packages:
             - starship
-        - repo: terra
-          packages:
-            - zed
+        #- repo: terra
+        #  packages:
+        #    - zed
         - antigravity
         - bazaar
         - bluecurve-cursor-theme
