@@ -7,9 +7,9 @@ modules:
 
   - type: script
     snippets:
-      - |
-        dnf config-manager setopt terra.enabled=1
-        dnf config-manager setopt terra-extras.enabled=1
+      #- |
+      #  dnf config-manager setopt terra.enabled=1
+      #  dnf config-manager setopt terra-extras.enabled=1
       # dnf config-manager setopt terra-mesa.enabled=1
       #- "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release -y"
 
@@ -40,10 +40,10 @@ modules:
         #- repo: terra
         #  packages:
         #    - zed
-        - antigravity
+        # - antigravity
         - bazaar
-        - bluecurve-cursor-theme
-        - bluecurve-icon-theme
+        # - bluecurve-cursor-theme
+        # - bluecurve-icon-theme
         # - chromium
         - clevis
         - clevis-pin-tpm2
@@ -80,13 +80,13 @@ modules:
         - https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64
 
 
-  - type: script
-    snippets:
-      - "rm /etc/yum.repos.d/teamviewer.repo" # because its signing is broken and i'm baking the rpm in anyway...
-      - |
-        dnf config-manager setopt terra.enabled=0
-        dnf config-manager setopt terra-extras.enabled=0
-      # dnf config-manager setopt terra-mesa.enabled=0
+  #- type: script
+  #  snippets:
+  #    - "rm /etc/yum.repos.d/teamviewer.repo" # because its signing is broken and i'm baking the rpm in anyway...
+  #    - |
+  #      dnf config-manager setopt terra.enabled=0
+  #      dnf config-manager setopt terra-extras.enabled=0
+  #    # dnf config-manager setopt terra-mesa.enabled=0
 
   - type: copy
     from: ghcr.io/perchnet/interception-vimproved:latest
