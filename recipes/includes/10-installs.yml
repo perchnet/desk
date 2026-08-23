@@ -29,56 +29,56 @@ modules:
         - firefoxpwa.repo
         #- https://packages.microsoft.com/yumrepos/vscode/config.repo
 
-    install:
-      packages:
-        - repo: copr:copr.fedorainfracloud.org:brirec:interception-tools
-          packages:
-            - interception-tools
-        - repo: copr:copr.fedorainfracloud.org:atim:starship
-          packages:
-            - starship
-        #- repo: terra
-        #  packages:
-        #    - zed
-        # - antigravity
-        - bazaar
-        # - bluecurve-cursor-theme
-        # - bluecurve-icon-theme
-        # - chromium
-        - clevis
-        - clevis-pin-tpm2
-        - clevis-systemd
-        - clevis-udisks2
-        - dialog
-        - elementary-files
-        - firefox
-        - firefoxpwa
-        - fuzzel
-        - ghostty #-nightly
-        - keylime
-        - libevdev-devel
-        # - idevicerestore
-        #- microsoft-edge-beta
-        - microsoft-edge-stable
-        - neovim
-        - podman-compose
-        # - tpm2-tools
-        - waypipe
-        - xeyes
-        - yaml-cpp
-        #- yaml-cpp-devel
-        - zsh
-        - zoxide
-        - https://downloads.1password.com/linux/rpm/edge/x86_64/1password-latest.rpm
-        - https://downloads.1password.com/linux/rpm/edge/x86_64/1password-cli-latest.x86_64.rpm
-        #- https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-        - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
-        #- https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
-        #- https://prerelease.keybase.io/keybase_amd64.rpm
-        #- https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
-        - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
-        - https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64
-
+      install:
+        packages:
+          - repo: copr:copr.fedorainfracloud.org:brirec:interception-tools
+            packages:
+              - interception-tools
+          - repo: copr:copr.fedorainfracloud.org:atim:starship
+            packages:
+              - starship
+          #- repo: terra
+          #  packages:
+          #    - zed
+          # - antigravity
+          - bazaar
+          # - bluecurve-cursor-theme
+          # - bluecurve-icon-theme
+          # - chromium
+          - clevis
+          - clevis-pin-tpm2
+          - clevis-systemd
+          - clevis-udisks2
+          - dialog
+          - elementary-files
+          - firefox
+          - firefoxpwa
+          - fuzzel
+          - ghostty #-nightly
+          - keylime
+          - libevdev-devel
+          # - idevicerestore
+          #- microsoft-edge-beta
+          - microsoft-edge-stable
+          - neovim
+          - podman-compose
+          # - tpm2-tools
+          - waypipe
+          - xeyes
+          - yaml-cpp
+          #- yaml-cpp-devel
+          - zsh
+          - zoxide
+          - https://downloads.1password.com/linux/rpm/edge/x86_64/1password-latest.rpm
+          - https://downloads.1password.com/linux/rpm/edge/x86_64/1password-cli-latest.x86_64.rpm
+          #- https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+          - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
+          #- https://github.com/peazip/PeaZip/releases/download/10.5.0/peazip-10.5.0.LINUX.Qt6-1.x86_64.rpm
+          #- https://prerelease.keybase.io/keybase_amd64.rpm
+          #- https://vivaldi.com/download/vivaldi-stable.x86_64.rpm
+          - https://github.com/xpipe-io/xpipe/releases/latest/download/xpipe-installer-linux-x86_64.rpm
+          - https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64
+  
 
   #- type: script
   #  snippets:
@@ -106,6 +106,6 @@ modules:
   - type: script
     scripts:
       - "install-1p.sh"
-      - "install-librepods.sh"
+     # - "install-librepods.sh"
     snippets:
       - echo "com.mitchellh.ghostty.desktop" > /etc/xdg/xdg-terminals.list 
