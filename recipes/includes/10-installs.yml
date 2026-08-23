@@ -5,8 +5,8 @@ modules:
     scripts:
       - "before-packages.sh"
 
-  - type: script
-    snippets:
+#  - type: script
+#    snippets:
       #- |
       #  dnf config-manager setopt terra.enabled=1
       #  dnf config-manager setopt terra-extras.enabled=1
