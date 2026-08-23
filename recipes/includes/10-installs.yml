@@ -54,6 +54,7 @@ modules:
         - firefoxpwa
         - fuzzel
         - ghostty #-nightly
+        - gvfs-mtp
         - keylime
         - libevdev-devel
         # - idevicerestore
