@@ -35,7 +35,7 @@ jobs:
       - uses: firebuild/apt-eatmydata-action@v1
       # the build is fully handled by the reusable github action
       - name: Build Custom Image
-        uses: blue-build/github-action@v1.11
+        uses: blue-build/github-action@v1.13
         #uses: b-/github-action@patch-1
         with:
           recipe: ${{ matrix.recipe }}
