@@ -41,14 +41,19 @@ BROWSER_SUPPORT_PATH="/usr/lib/1Password/1Password-BrowserSupport"
 
 
 # Add .desktop file and icons
-if [ -d /usr/share/applications ]; then
-# xdg-desktop-menu will only be available if xdg-utils is installed, which is likely but not guaranteed
-if [ -n "$(which xdg-desktop-menu)" ]; then
-  xdg-desktop-menu install --mode system --novendor /usr/lib/1Password/resources/1password.desktop
-  xdg-desktop-menu forceupdate
+DESKTOP_FILE=/usr/lib/1Password/resources/1password.desktop
+if [ -f ${DESKTOP_FILE} ]; then
+  if [ -d /usr/share/applications ]; then
+    # xdg-desktop-menu will only be available if xdg-utils is installed, which is likely but not guaranteed
+    if [ -n "$(which xdg-desktop-menu)" ]; then
+      xdg-desktop-menu install --mode system --novendor ${DESKTOP_FILE}
+      xdg-desktop-menu forceupdate
+    else
+      install -m0644 ${DESKTOP_FILE} /usr/share/applications
+    fi
+  fi
 else
-  install -m0644 /usr/lib/1Password/resources/1password.desktop /usr/share/applications
-fi
+  echo "===!!!=== Desktop file ${DESKTOP_FILE} not found."  
 fi
 if [ -d /usr/share/icons ]; then
 cp -rf /usr/lib/1Password/resources/icons/* /usr/share/icons/
