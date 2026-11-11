@@ -49,7 +49,7 @@ modules:
         - clevis-systemd
         - clevis-udisks2
         - dialog
-        - elementary-files
+        #- elementary-files
         - firefox
         - firefoxpwa
         - fuzzel
