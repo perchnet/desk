@@ -63,6 +63,7 @@ modules:
         - neovim
         - podman-compose
         # - tpm2-tools
+        - virtiofsd
         - waypipe
         - xeyes
         - yaml-cpp
